@@ -16,7 +16,7 @@ Usage:
 Clone the git to your server in the desired location
 example of command from the directory you want to install strikeout to.
 
-git clone https://github.com/trafficpest/strikeout.git .
+`git clone https://github.com/trafficpest/strikeout.git .`
 
 copy or rename config.php.sample to config.php and adjust the array 
 to your settings
