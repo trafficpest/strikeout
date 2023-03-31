@@ -1,0 +1,16 @@
+# ignore vim tags
+tags
+
+# ignore testing qr images
+/qr-images/*
+
+# ignore payments.csv
+payments.csv
+
+# ignore config.php
+config.php
+
+# ignore frontaccounting db-config.php
+db-config.php
+
+
