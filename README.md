@@ -8,10 +8,18 @@ HTTP server (Apache, Nginx, etc)
 PHP installed and
 Strike account API_key
 
+Optional:
+Strike webhook subscription (free) for generating csv of transactions
+and recording entries in your accounting software.
+
 Usage:
 Clone the git to your server in the desired location
+example of command from the directory you want to install strikeout to.
 
-Adjust the /config.php array to your settings
+git clone https://github.com/trafficpest/strikeout.git .
+
+copy or rename config.php.sample to config.php and adjust the array 
+to your settings
 
 $config = array(<br>
 'api_key' => 'your strike key here',<br>
@@ -21,13 +29,20 @@ $config = array(<br>
   );
 
 To create an invoice load start.php with at least 'amount' set in POST.
-index.php is a test page to generate your invoice you can see a basic HTML
-Form example there.
+index.php is a test page to generate your invoice and test your settings. 
+You can see a basic HTML form example in the source there.
+
+Strike webhook is supported make a webhook at (need to put api-key)
+
+https://docs.strike.me/api/create-subscription
+
+make sure to have "invoice.updated" as an eventType
+payments will be logged in a csv file at strikeout/webhooks/payments.csv
+
 
 Coming soon:
 Default CSS styling for invoice page and a pay button
-Strike payment webhook support with CSV logging like a statement.
 Frontaccounting integration for automated payment accounting. Most
-The webhook stuff is already done but not tested yet. Will be finished
-And uploaded soon. You should be able to add your own accounting
+the stuff is already done but not tested yet. Will be finished
+and uploaded soon. You should be able to add your own accounting
 software pretty easily.
