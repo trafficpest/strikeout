@@ -1,0 +1,19 @@
+<?php
+/*----------------------------------------------
+| Basic config file change as needed for your  |
+| Change as needed for your enviroment         |
+|                                              |
+|                                              |
+|                                              |
+|                                              |
+|_____________________________________________*/
+
+$config = array(
+  'api_key' => 'Your strike api-key goes here',
+  'qr_img_dir' => './qr-images/', // change to use a tmp dir if desired
+  'payee_name' => 'Your Name or Company Name goes here',
+  'action_url' => './index.php', // where you are directed after payment
+  'timezone' => 'America/Los_Angeles', // your timezone check tz database
+  'secret' => 'put a random secret / password here' 
+);
+
