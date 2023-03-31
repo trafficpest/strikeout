@@ -1,6 +1,6 @@
-# strike_tools
+# strikeout
 
-Strike tools is to help you integrate Bitcoin payments as USD
+strikeout is to help you integrate Bitcoin payments as USD
 Using Strike's API For your website and business.
 
 Requires:
