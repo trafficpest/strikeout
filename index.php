@@ -1,20 +1,26 @@
+<!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
 
 <body>
 
-<center>
+<div class="container">
 <h1>Strike API test page</h1>
+
 <form action="./start.php" method="post">
-  <label for="name">Your Name:</label><br>
-  <input type="text" id="name" name="name" ><br>
-  <label for="custId">Cusomer ID:</label><br>
-  <input type="text" id="custId" name="custId" ><br> 
-  <label for="amount">Amount:</label><br>
-  <input type="text" id="amount" name="amount" required><br><br>
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="name">
+  <label for="custId">Cusomer ID:</label>
+  <input type="text" id="custId" name="custId" >
+  <label for="amount">Amount:</label>
+  <input type="text" id="amount" name="amount" required>
   <input type="submit" value="Submit">  
 </form>
-</center>
+</div>
 
 </body>
 </html>

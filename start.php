@@ -36,17 +36,34 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_M );
 
 ?>
 
+<!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
 
-<center>
-  <?=$strike_quote['description']?><br>
-  $<?=$strike_quote['targetAmount']['amount']?><br>
-  <img id="invoicePic" src="<?=$file?>" /><br>
+<body>
+<div class="container">
+
+<div class="strikeInvoice">
+
+  <h3>Bitcoin Lightning Invoice</h3>
+
+<div class="description">
+<?=$strike_quote['description']?>
+</div>
+<div class="amount">
+$<?=$strike_quote['targetAmount']['amount']?>
+</div>
+<div class="qrcode">
+<img id="invoicePic" src="<?=$file?>" />
+</div>
 <div id="result">
-  Expires in <div style="display:inline;" id="secondsLeft">
-    <?=$strike_quote['expirationInSec']?></div> seconds<br>
+<div id="expirationLine">Expires in 
+<div id="secondsLeft"><?=$strike_quote['expirationInSec']?></div>
+ seconds</div>
+<div class="copyInvoice">
   <input 
     type="text"
     value="<?=$strike_quote['lnInvoice']?>"
@@ -56,14 +73,21 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_M );
     type="button" 
     value="<?=$strike_quote['lnInvoice']?>" 
     id="lnInvoice">Copy
-  </button><br>
+  </button>
+</div>
   <button
     onclick="location.href='lightning:<?=$strike_quote['lnInvoice']?>';"
     type="button"
     id="openWallet">Open Wallet
     </button> 
 </div>
-</center>
+</div>
+<p>Pay with any lightning wallet, while merchants receive dollars using 
+<a href="https://strike.me">Strike</a>.</p>
+<p><strong>Powered by 
+<a href="https://github.com/trafficpest/strikeout">Strikeout</a>
+</strong></p>
+</div>
 
 <script src="<?=$path_to_root.'/assets/js/copyInvoice.js'?>"></script>
 <script> 

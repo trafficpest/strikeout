@@ -4,9 +4,13 @@ include_once $path_to_root.'/config.php';
 
 function issue_strike_invoice(
     $charge_amount, 
-    $customer_name = 'unknown',
-    $correlationId = null
+    $customer_name,
+    $correlationId
 ){
+  
+  if (empty ($customer_name) ){
+    $customer_name = 'Customer';
+  }
 
   $correlationId = $correlationId.'|'.uniqid();
   
