@@ -100,18 +100,15 @@ function find_strike_invoice( $invoiceId ){
 
 }
 
-function create_strike_subsrciption( $json ){
+function get_strike_subscriptions(){
 
   global $config;  
 
-  $url = 'https://api.strike.me/v1/invoices/'.$invoiceId.'/quote';
+  $url = 'https://api.strike.me/v1/subscriptions/';
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
     'accept: application/json',
     'Authorization: Bearer '.$config['api_key']
   ));
@@ -122,6 +119,66 @@ function create_strike_subsrciption( $json ){
   $response = json_decode($response , true);
 
   return $response;
+
+}
+
+function create_strike_subsrciption( $url ){
+
+  global $config;  
+
+  $post_data = array(
+    'webhookUrl' => $url,
+    'webhookVersion' => 'v1',
+    'secret' => $config['secret'],
+    'enabled' => true,
+    'eventTypes' => array(
+      'invoice.created',
+      'invoice.updated'
+    )
+  );
+
+  $json = json_encode($post_data);
+
+  $url = 'https://api.strike.me/v1/subscriptions';
+  $ch = curl_init($url);
+
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'accept: application/json',
+    'Content-Type: application/json',
+    'Authorization: Bearer '.$config['api_key']
+  ));
+
+  $response = curl_exec($ch);
+  curl_close($ch);
+
+  $response = json_decode($response , true);
+
+  return $response;
+}
+
+function delete_strike_subscriptions($subscriptionId){
+
+  global $config;  
+
+  $url = 'https://api.strike.me/v1/subscriptions/'.$subscriptionId;
+  $ch = curl_init($url);
+
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Authorization: Bearer '.$config['api_key']
+  ));
+
+  $response = curl_exec($ch);
+  curl_close($ch);
+
+  $response = json_decode($response , true);
+
+  return $response;
+
 }
 
 function check_strike_signature(){

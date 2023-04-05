@@ -45,51 +45,49 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_M );
 
 <body>
 <div class="container">
-
-<div class="strikeInvoice">
+  <div class="strikeInvoice">
 
   <h3>Bitcoin Lightning Invoice</h3>
 
-<div class="description">
-<?=$strike_quote['description']?>
-</div>
-<div class="amount">
-$<?=$strike_quote['targetAmount']['amount']?>
-</div>
-<div class="qrcode">
-<img id="invoicePic" src="<?=$file?>" />
-</div>
-<div id="result">
-<div id="expirationLine">Expires in 
-<div id="secondsLeft"><?=$strike_quote['expirationInSec']?></div>
- seconds</div>
-<div class="copyInvoice">
-  <input 
-    type="text"
-    value="<?=$strike_quote['lnInvoice']?>"
-    readonly>
-  <button
-    onclick="copyInvoice()" 
-    type="button" 
-    value="<?=$strike_quote['lnInvoice']?>" 
-    id="lnInvoice">Copy
-  </button>
-</div>
-  <button
-    onclick="location.href='lightning:<?=$strike_quote['lnInvoice']?>';"
-    type="button"
-    id="openWallet">Open Wallet
-    </button> 
-</div>
-</div>
-<p>Pay with any lightning wallet, while merchants receive dollars using 
-<a href="https://strike.me">Strike</a>.</p>
-<p><strong>Powered by 
-<a href="https://github.com/trafficpest/strikeout">Strikeout</a>
-</strong></p>
+  <div class="description">
+    <?=$strike_quote['description']?>
+  </div>
+  <div class="amount">
+    $<?=$strike_quote['targetAmount']['amount']?>
+  </div>
+  <div class="qrcode">
+    <img id="invoicePic" src="<?=$file?>" />
+  </div>
+  <div id="result">
+    <div id="expirationLine">Expires in 
+      <div id="secondsLeft"><?=$strike_quote['expirationInSec']?></div>
+       seconds</div>
+    <div class="copyInvoice">
+      <input 
+        type="text"
+        value="<?=$strike_quote['lnInvoice']?>"
+        readonly>
+      <button
+        onclick="copyInvoice()" 
+        type="button" 
+        value="<?=$strike_quote['lnInvoice']?>" 
+        id="lnInvoice">Copy
+      </button>
+    </div>
+      <button
+        onclick="location.href='lightning:<?=$strike_quote['lnInvoice']?>';"
+        type="button"
+        id="openWallet">Open Wallet
+        </button> 
+    </div>
+  </div>
+  <p>Pay with any lightning wallet, while merchants receive dollars using 
+  <a href="https://strike.me">Strike</a>.</p>
+  <p><strong>Powered by 
+  <a href="https://github.com/trafficpest/strikeout">Strikeout</a>
+  </strong></p>
 </div>
 
-<script src="<?=$path_to_root.'/assets/js/copyInvoice.js'?>"></script>
 <script> 
   var path_to_root = "<?=$path_to_root?>";
   var action_url = "<?=$config['action_url']?>";
@@ -97,6 +95,7 @@ $<?=$strike_quote['targetAmount']['amount']?>
   var seconds = <?=$strike_quote['expirationInSec']?>;
 </script>
 <script src="<?=$path_to_root.'/assets/js/invoice.js'?>"></script>
+<script src="<?=$path_to_root.'/assets/js/copyInvoice.js'?>"></script>
 
 </body>
 </html>

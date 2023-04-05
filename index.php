@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+<?php
 
+$path_to_root = '.';
+require_once $path_to_root.'/inc/session.php';
 
-<body>
+if (isset($_POST['configForm'])){
+      $config = update_config( $path_to_root.'/config.php' );
+}
 
-<div class="container">
-<h1>Strike API test page</h1>
-
-<form action="./start.php" method="post">
-  <label for="name">Your Name:</label>
-  <input type="text" id="name" name="name">
-  <label for="custId">Cusomer ID:</label>
-  <input type="text" id="custId" name="custId" >
-  <label for="amount">Amount:</label>
-  <input type="text" id="amount" name="amount" required>
-  <input type="submit" value="Submit">  
-</form>
-</div>
-
-</body>
-</html>
+include $path_to_root.'/inc/ui/header.php';
+include $path_to_root.'/inc/ui/configure-form.php';
+include $path_to_root.'/inc/ui/footer.php';
+?>
 

@@ -25,7 +25,7 @@ if (check_strike_signature()){
         $strike_invoice['description']
       );
 
-      append_payment_csv('payments.csv',$csv_line);
+      append_payment_csv('./csv/payments.csv',$csv_line);
       
      }
   }

@@ -13,4 +13,6 @@ config.php
 # ignore frontaccounting db-config.php
 db-config.php
 
+#ignore swap files
+*.swp
 
