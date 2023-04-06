@@ -13,9 +13,9 @@
 <form action="<?=$path_to_root.'/index.php'?>" method="post">
   <label for="username">User:</label>
   <input type="text" id="username" name="username" readonly
-    value="<?=$config['payee_name']?>" required>
+    value="<?=$config['payee_name']?>">
   <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
+  <input type="password" id="password" name="password" >
   <input type="hidden" id="login" name="login" value="true" >
   <input type="submit" value="Submit">  
 </form>
