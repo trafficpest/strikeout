@@ -1,4 +1,4 @@
-<select id="timezoneSelect" name="timezoneSelect" >
+<select class="form-control" id="timezoneSelect" name="timezoneSelect" >
   <option value="Africa/Abidjan">Africa/Abidjan GMT+0:00</option>
   <option value="Africa/Accra">Africa/Accra GMT+0:00</option>
   <option value="Africa/Addis_Ababa">Africa/Addis_Ababa GMT+3:00</option>

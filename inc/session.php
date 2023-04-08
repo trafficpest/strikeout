@@ -22,9 +22,8 @@ if (isset($_POST['login'])){
 
 if (session_status() !== PHP_SESSION_ACTIVE ||
      !isset($_SESSION['user']) ) {
-  include $path_to_root.'/inc/ui/password-form.php';
+  include $path_to_root.'/inc/ui/login-form.php';
   exit;
 }
-
 
 ?>

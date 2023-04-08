@@ -4,15 +4,15 @@ $subscriptions = get_strike_subscriptions();
 
 ?>
 
-<div class="container2">
+<form class="p-3" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
 <h1>Webhook Subscriptions</h1>
-
-<form action="<?=$_SERVER['REQUEST_URI']?>" method="post">
 <div style="overflow-x:auto;">
-<table>
+<table class="table center">
+<thead class="thead">
 <tr>
 <th>ID</th><th>Webhook Url</th><th>Version</th><th>Enabled</th>
 <th>Created</th><th>Event Types</th><th>Delete</th>
+</thead>
 </tr>
 <?php
 
@@ -35,5 +35,3 @@ foreach ( $subscriptions as $sub ){
 </table>
 </div>
 </form>
-</div>
-

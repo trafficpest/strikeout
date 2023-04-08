@@ -9,12 +9,23 @@ if ( isset($_POST['createSubcription']) ) {
 }
 
 if ( isset($_GET['deleteSubscription']) ) {
-delete_strike_subscriptions($_GET['deleteSubscription']);
+  delete_strike_subscriptions($_GET['deleteSubscription']);
 }
 
 include $path_to_root.'/inc/ui/header.php';
-include $path_to_root.'/inc/ui/create-sub-form.php';
-include $path_to_root.'/inc/ui/webhooks-table.php';
-include $path_to_root.'/inc/ui/footer.php';
 
 ?>
+
+
+<div class="container bg-light shadow rounded mt-5 w-80">
+  <?include $path_to_root.'/inc/ui/create-sub-form.php'?>
+</div>
+<div class="container bg-light shadow rounded mt-5 w-80">
+  <?include $path_to_root.'/inc/ui/available-webhooks.php'?>
+</div>
+<div class="container bg-light shadow rounded mt-5 w-80">
+  <?include $path_to_root.'/inc/ui/webhooks-table.php'?>
+</div>
+
+
+<?include $path_to_root.'/inc/ui/footer.php'?>

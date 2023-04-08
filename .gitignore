@@ -16,3 +16,5 @@ db-config.php
 #ignore swap files
 *.swp
 
+#ignore error_logs
+error_log

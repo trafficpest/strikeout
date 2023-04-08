@@ -33,7 +33,7 @@ if(typeof(EventSource) !== "undefined" ) {
       stopTimer();
       source.close();
       document.getElementById('invoicePic').src = path_to_root
-        + "/assets/images/paid.png" ;
+        + "/assets/images/paid.jpg" ;
       document.getElementById("result").innerHTML = "<h3>PAID</h3>"
         + `<button onclick="window.location.href= action_url;">`
         + "Continue</button>";

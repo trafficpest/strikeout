@@ -11,22 +11,22 @@
 
 <form class="p-3" 
   action="<?=$path_to_root.'/index.php'?>" method="post">
-<h1>Strikeout Access</h1>
-<div class="mb-3">
-  <label for="username" class="form-label">User:</label>
-  <input type="text" class="form-control" id="username" name="username" readonly
-    value="<?=$config['payee_name']?>">
-</div>
-<div class="mb-3">
-  <label for="username" class="form-label">User:</label>
-  <label for="password" class="form-label">Password:</label>
-  <input type="password" class="form-control" id="password" name="password">
-</div>
-  <input type="hidden" id="login" name="login" value="true" >
-<div class="mb-3">
-  <button type="submit" class="btn btn-success" value="Submit">Login
-  </button>
-</div>
+  <h1>Strikeout Access</h1>
+  <div class="mb-3">
+    <label for="username" class="form-label">User:</label>
+    <input type="text" class="form-control" id="username" name="username" readonly
+      value="<?=$config['payee_name']?>">
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">User:</label>
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+    <input type="hidden" id="login" name="login" value="true" >
+  <div class="mb-3">
+    <button type="submit" class="btn btn-success" value="Submit">Login
+    </button>
+  </div>
 </form>
 </div>
 

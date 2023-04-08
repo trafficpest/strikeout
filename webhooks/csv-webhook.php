@@ -1,8 +1,8 @@
 <?php
 
 $path_to_root = '..';
-include_once $path_to_root.'/inc/strike.php';
-include_once $path_to_root.'/inc/csv.php';
+require_once $path_to_root.'/inc/strike.php';
+require_once './csv/inc/csv.php';
 
 date_default_timezone_set( $config['timezone'] );
 
@@ -14,7 +14,18 @@ if (check_strike_signature()){
     
     $strike_invoice = find_strike_invoice( $webhook_data['data']['entityId'] );
     if ($strike_invoice['state'] == 'PAID'){
-      
+  
+     $header_line = array(
+        'Date',
+        'CorrelationId',
+        'Amount',
+        'Currency',
+        'State',
+        'InvoiceId',
+        'Description'
+      );
+
+
       $csv_line = array(
         date('Y-m-d'), 
         $strike_invoice['correlationId'],
@@ -25,7 +36,7 @@ if (check_strike_signature()){
         $strike_invoice['description']
       );
 
-      append_payment_csv('./csv/payments.csv',$csv_line);
+      append_csv_file('./csv/payments.csv',$csv_line, $header_line);
       
      }
   }

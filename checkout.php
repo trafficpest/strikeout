@@ -31,8 +31,8 @@ if ( !isset( $strike_invoice['invoiceId'] ) ){
 
 $strike_quote = issue_strike_quote( $strike_invoice['invoiceId'] );
 
-$file = $config['qr_img_dir'].uniqid();
-QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_M );
+$file = $config['qr_img_dir'].uniqid().'.png';
+QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_L, 4 );
 
 ?>
 
@@ -44,7 +44,7 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_M );
 </head>
 
 <body>
-<div class="container">
+<div class="inv-container">
   <div class="strikeInvoice">
 
   <h3>Bitcoin Lightning Invoice</h3>
