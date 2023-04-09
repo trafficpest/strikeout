@@ -39,7 +39,7 @@ in `POST`. `invoice.php` is a test page to generate your invoice and test
 your settings. You can see a basic HTML form example in the source there.
 
 Strike webhooks are supported and can be created in the app. The app 
-comes with two available webhooks already available:
+comes with two webhooks already available:
 
 - CSV Payment: to record payments to a CSV for easy data export/import.
 - FrontAccounting: to automate payment entries, including to proper 
@@ -50,6 +50,6 @@ https://frontaccounting.com/.
 ### Note:
 
 You should be able to add your accounting software/plugins pretty easily. 
-To create or install one, make a folder in the `webhooks` directory and 
-place the webhook PHP file in the `webhooks` folder for StrikeOut to list 
-it. Please share your work with others.
+To create one, make a new folder in the `webhooks` directory with any 
+required source and assets then place the webhook PHP file in the `webhooks` 
+folder for StrikeOut to list it. Please share your work with others.
