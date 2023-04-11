@@ -1,6 +1,5 @@
 <?php
 
-
 $path_to_root = '../..';
 require_once $path_to_root.'/inc/session.php';
 require_once $path_to_root.'/webhooks/csv/inc/csv.php';
@@ -21,7 +20,7 @@ $csv_data = get_csv_file($csv_file);
 
 <div class="container bg-light shadow rounded mt-5 w-80">
 <div class="table-responsive" style="max-height: 800px;">
-<table class="table">
+<table class="table";
 <?php
 echo '<tr>';
 foreach ($csv_data[0] as $header => $value){

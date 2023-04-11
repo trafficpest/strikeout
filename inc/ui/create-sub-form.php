@@ -5,6 +5,6 @@
     value="" required>
   <input type="hidden" id="createSubcription" name="createSubcription" 
   value="true" >
-  <button type="submit" class="btn btn-success" value="Submit">Submit</button>
+  <button type="submit" class="btn btn-warning" value="Submit">Submit</button>
 </form>
 

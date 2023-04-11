@@ -7,7 +7,8 @@
 
 <body class="bg-dark">
 
-<div class="container bg-light shadow rounded mt-5 w-50">
+<div class="container bg-light shadow rounded mt-5 w-80"
+     style="max-width: 480px;">
 
 <form class="p-3" 
   action="<?=$path_to_root.'/index.php'?>" method="post">
@@ -24,7 +25,7 @@
   </div>
     <input type="hidden" id="login" name="login" value="true" >
   <div class="mb-3">
-    <button type="submit" class="btn btn-success" value="Submit">Login
+    <button type="submit" class="btn btn-warning" value="Submit">Login
     </button>
   </div>
 </form>

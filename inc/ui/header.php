@@ -10,7 +10,9 @@
 <body class="bg-dark">
 <nav class="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">StrikeOut</span>
+    <a class="navbar-brand">
+  <img src="<?=$path_to_root.'/assets/images/logo.png'?>" alt="StrikeOut" 
+        class="rounded" width="140" height="60"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" i
       data-bs-target="#navbarNav" aria-controls="navbarNav" 
       aria-expanded="false" aria-label="Toggle navigation">

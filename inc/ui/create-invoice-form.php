@@ -13,7 +13,7 @@
     <input type="text"  class="form-control" id="amount" name="amount" required>
   </div>
   <div class="mb-3">
-    <input type="submit" class="btn btn-success" value="Submit">  
+    <input type="submit" class="btn btn-warning" value="Submit">  
   </div>
 </form>
 

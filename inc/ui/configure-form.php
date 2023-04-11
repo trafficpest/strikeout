@@ -32,6 +32,6 @@
     <input type="hidden" id="configForm" name="configForm" 
     value="true" >
   <div class="mb-3">
-    <button type="submit" class="btn btn-success" value="Submit">Submit</button>
+    <button type="submit" class="btn btn-warning" value="Submit">Submit</button>
   </div>
 </form>

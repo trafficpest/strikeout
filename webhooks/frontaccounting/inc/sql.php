@@ -1,7 +1,5 @@
 <?php
 
-require '../db-config.php';
-
 function get_sql_data( $sqlquery ){
   global $db;
 
@@ -12,7 +10,9 @@ function get_sql_data( $sqlquery ){
 
   // Check connection  
   if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $error[] = 'ERROR';
+    $error[] = $conn->connect_error ;
+    return $error;
   }
 
   $result = $conn->query( $sqlquery );
@@ -24,7 +24,7 @@ function get_sql_data( $sqlquery ){
     return $sqlreturned;
   } else {
 
-    $sqlreturned = "0 results found in database";
+    $sqlreturned = "0 results";
     return $sqlreturned;
   }
   

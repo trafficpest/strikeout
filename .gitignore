@@ -10,8 +10,9 @@ payments.csv
 # ignore config.php
 config.php
 
-# ignore frontaccounting db-config.php
+# ignore frontaccounting configs
 db-config.php
+fa-config.php
 
 #ignore swap files
 *.swp
