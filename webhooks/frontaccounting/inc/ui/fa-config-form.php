@@ -14,7 +14,8 @@ foreach ($fa_users as $fa_user){
   </div>
   <div class="mb-3">
     <label for="bankAcctName" class="form-label">Bank Account:</label>
-    <select class="form-control"  id="bankAcctName" name="bankAcctName">
+    <select class="form-control"  id="bankAcctName" name="bankAcctName"
+      onChange="setDebitAccount()">
     <option value="">***Deposit Bank Account***</option>
 <?
 foreach ($bank_accts as $bank_acct){
@@ -46,7 +47,15 @@ foreach ($fa_coa as $account){
     .$account['account_code'].' '.$account['account_name'].'</option>'."\r\n";
 }
 ?>
-     </select>
+    </select> 
+  </div>
+    <div class="mb-3">
+    <label for="acctOption" class="form-label">Account Option:</label>
+    <select class="form-control"  id="acctOption" name="acctOption">
+    <option value="">***Select Entry Type***</option>
+    <option value="deposit">Bank Deposit</option>
+    <option value="customer">Customer Payment</option>
+    </select>
   </div>
     <input type="hidden" id="faConfigForm" name="faConfigForm" 
     value="true" >
@@ -63,5 +72,17 @@ foreach ($fa_coa as $account){
   debitAcct.value = "<?=$fa['debit_acct']?>";
   var creditAcct = document.getElementById("creditAcct");
   creditAcct.value = "<?=$fa['credit_acct']?>";
+  var acctOption = document.getElementById("acctOption");
+  acctOption.value = "<?=$fa['acctOption']?>";
+  function setDebitAccount(){
+    var bankAcctId = document.getElementById("bankAcctName").value;
+    var bankAccts = <?=json_encode($bank_accts)?>;
+    var debitAcct = document.getElementById("debitAcct");
+    bankAccts.forEach((bankAcct) => {
+      if (bankAcct['id']  === bankAcctId){
+        debitAcct.value = bankAcct['account_code'];
+      }
+    });
+  }
 </script>
 

@@ -32,6 +32,7 @@ function get_fa_bank_accts(){
   foreach ($sql_results as $result){
     $bank_accts[] = array(
       'id' => $result['id'],
+      'account_code' => $result['account_code'],
       'bank_account_name' => $result['bank_account_name']
     );
   }
@@ -88,7 +89,8 @@ function load_fa_config($config_file){
     'bank_acct_name' => '',
     'debit_acct' => '',
     'credit_acct' => '',
-    'timezone' => $config['timezone']
+    'timezone' => $config['timezone'],
+    'acctOption' => $_POST['acctOption']
     );
 
   $fa = load_config($config_file, $fa_default_config);
@@ -103,7 +105,8 @@ function update_fa_config($config_file){
     'bank_acct_name' => $_POST['bankAcctName'],
     'debit_acct' => $_POST['debitAcct'],
     'credit_acct' => $_POST['creditAcct'],
-    'timezone' => $config['timezone']
+    'timezone' => $config['timezone'],
+    'acctOption' => $_POST['acctOption']
   );
   
   update_config($config_file, $fa);

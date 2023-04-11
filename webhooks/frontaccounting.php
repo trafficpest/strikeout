@@ -19,11 +19,16 @@ if (check_strike_signature()){
     $strike_invoice = find_strike_invoice( $webhook_data['data']['entityId'] );
     if ($strike_invoice['state'] == 'PAID'){
     //code will go here
+    $tax_id = explode('|', $strike_invoice['correlationId']);
+    enter_fa_payment($tax_id[0], $strike_invoice['amount']['amount']);
 
     }
   }
 }
     
+//enter_fa_payment(21333, 50);
 
+    $strike_invoice = find_strike_invoice( '8af4d6f1-81ee-4578-bb93-1e6ba41d4f87' );
+    $tax_id = explode('|', $strike_invoice['correlationId']);
 
 ?> 
