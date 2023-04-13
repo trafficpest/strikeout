@@ -90,7 +90,7 @@ function load_fa_config($config_file){
     'debit_acct' => '',
     'credit_acct' => '',
     'timezone' => $config['timezone'],
-    'acctOption' => $_POST['acctOption']
+    'acct_option' => ''
     );
 
   $fa = load_config($config_file, $fa_default_config);
@@ -106,7 +106,7 @@ function update_fa_config($config_file){
     'debit_acct' => $_POST['debitAcct'],
     'credit_acct' => $_POST['creditAcct'],
     'timezone' => $config['timezone'],
-    'acctOption' => $_POST['acctOption']
+    'acct_option' => $_POST['acctOption']
   );
   
   update_config($config_file, $fa);

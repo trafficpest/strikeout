@@ -53,8 +53,10 @@ foreach ($fa_coa as $account){
     <label for="acctOption" class="form-label">Account Option:</label>
     <select class="form-control"  id="acctOption" name="acctOption">
     <option value="">***Select Entry Type***</option>
-    <option value="deposit">Bank Deposit</option>
-    <option value="customer">Customer Payment</option>
+    <option value="bank_deposit">Bank Deposit</option>
+    <option value="invoice">Customer Payment (Invoice)</option>
+    <option value="debtor_no">Customer Payment (Debtor #)</option>
+    <option value="tax_id">Customer Payment (Tax ID)</option>
     </select>
   </div>
     <input type="hidden" id="faConfigForm" name="faConfigForm" 
@@ -73,7 +75,7 @@ foreach ($fa_coa as $account){
   var creditAcct = document.getElementById("creditAcct");
   creditAcct.value = "<?=$fa['credit_acct']?>";
   var acctOption = document.getElementById("acctOption");
-  acctOption.value = "<?=$fa['acctOption']?>";
+  acctOption.value = "<?=$fa['acct_option']?>";
   function setDebitAccount(){
     var bankAcctId = document.getElementById("bankAcctName").value;
     var bankAccts = <?=json_encode($bank_accts)?>;
