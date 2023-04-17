@@ -1,14 +1,15 @@
 <?php
 
-$path_to_root = '..'; $path_to_fa = './frontaccounting';
+$path_to_root = '..'; 
+$path_to_fa = './frontaccounting';
 
 require_once $path_to_root.'/inc/strike.php';
 require_once $path_to_fa.'/inc/payments.php';
 require_once $path_to_fa.'/inc/fa.php';
 
-$config = load_config($path_to_root.'/config.php');
-$db = load_db_config($path_to_fa.'/db-config.php');
-$fa = load_fa_config($path_to_fa.'/fa-config.php');
+$db = load_db_config($path_to_fa.'/config/db-config.php');
+$fa = load_fa_config($path_to_fa.'/config/fa-config.php');
+
 if (check_strike_signature()){
 
   $webhook_data = json_decode(file_get_contents("php://input"), true);

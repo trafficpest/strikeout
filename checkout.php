@@ -5,8 +5,12 @@ $path_to_root=".";
 include_once 'inc/strike.php';
 include 'inc/phpqrcode/qrlib.php';
 
-//print_r($_POST);
+//Use url variables first if available
+if ( isset($_GET['amount']) ){ $_POST['amount'] = $_GET['amount']; }
+if ( isset($_GET['name']) ) {$_POST['name'] = $_GET['name']; }
+if ( isset($_GET['custId']) ) {$_POST['custId'] = $_GET['custId']; }
 
+// error if amount wasn't set
 if ( empty( $_POST['amount'] ) ){
   echo '<center><h2>No invoice amount was set!</h2></center>';
   exit;
@@ -18,6 +22,7 @@ $strike_invoice = issue_strike_invoice(
   $_POST['custId']
 );
 
+// error if strike didnt return a invoice
 if ( !isset( $strike_invoice['invoiceId'] ) ){
   echo "
     <center><h2>There was an error</h2>

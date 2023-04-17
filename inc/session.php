@@ -2,13 +2,15 @@
 
 require_once $path_to_root.'/inc/configure.php';
 
+ini_set('log_errors', 1);
+ini_set('error_log', $path_to_root.'/error.log');
 ini_set('session.gc_maxlifetime', 1200);
 ini_set('session.cookie_secure', 1);
 ini_set('session.cookie_httponly', 1);
 session_start();
 
 if (!isset($config)){
-  $config = load_config( $path_to_root.'/config.php' );
+  $config = load_config( $path_to_root.'/config/config.php' );
 }
 
 if ( isset($_GET['logout']) ) {

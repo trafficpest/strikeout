@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <a class="navbar-brand">
   <img src="<?=$path_to_root.'/assets/images/logo.png'?>" alt="StrikeOut" 
-        class="rounded" width="140" height="60"></a>
+        class="rounded" width="140" height="60"></a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" i
       data-bs-target="#navbarNav" aria-controls="navbarNav" 
       aria-expanded="false" aria-label="Toggle navigation">
@@ -22,15 +22,15 @@
       <ul class="navbar-nav">
         <li class="navbar-item">
           <a class="nav-link" 
-            href="<?=$path_to_root.'/invoice.php'?>">Invoice</a>
+            href="<?=$path_to_root.'/pages/invoice.php'?>">Invoice</a>
         </li>
         <li class="navbar-item">
           <a class="nav-link" 
-            href="<?=$path_to_root.'/index.php'?>">Configure</a>
+            href="<?=$path_to_root.'/pages/setup.php'?>">Configure</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"           
-            href="<?=$path_to_root.'/webhooks.php'?>" role="button"  
+            href="<?=$path_to_root.'/pages/webhooks.php'?>" role="button"  
             data-bs-toggle="dropdown" aria-haspopup="true" 
              aria-expanded="false" >Webhooks</a>
           <ul class="dropdown-menu">
@@ -40,7 +40,7 @@
              .'/webhooks/frontaccounting'?>">FrontAccounting</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" 
-                   href="<?=$path_to_root.'/webhooks.php'?>">Subscriptions
+                   href="<?=$path_to_root.'/pages/webhooks.php'?>">Subscriptions
                 </a></li>
           </ul>
         </li>

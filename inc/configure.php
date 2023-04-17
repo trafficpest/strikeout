@@ -41,18 +41,16 @@ function load_config($config_file, $config=null) {
 function update_config($config_file, $config=null) {
   //update config_file with $config array if array is not set it
   //will update it as a strikeout config
-
   if (is_null($config)){
-    $config = array(
-      'api_key' => $_POST['apiKey'],
-      'qr_img_dir' => $_POST['qrDir'], 
+    $config = array( 
+      'api_key' => $_POST['apiKey'], 
+      'qr_img_dir' => $_POST['qrDir'],
       'payee_name' => $_POST['payeeName'],
       'action_url' => $_POST['actionUrl'],
       'timezone' => $_POST['timezoneSelect'],
       'secret' => $_POST['secret'] 
     );
   }
-
   $config_string = '<?php $config = ' . var_export($config, true) . ';';
   file_put_contents($config_file, $config_string);
   chmod( $config_file, 0600);

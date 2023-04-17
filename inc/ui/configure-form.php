@@ -1,4 +1,4 @@
-<form class="p-3" action="<?=$path_to_root.'/index.php'?>" method="post">
+<form class="p-3" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
   <h1>Configure Strikeout</h1>
   <div class="mb-3">
     <label for="payeeName" class="form-label">Payee Name:</label>

@@ -188,19 +188,23 @@ function fa_payment_by_taxid($tax_id, $amount){
   // Get the data needed
   $fiscalyear_row = get_fa_fiscal_year();  
   $debtor_row = get_fa_debtor_by_taxid($tax_id);
-  $branch_row = get_fa_branch_by_debtor($debtor_row);
-  $debttran_row = get_last_debtor_trans();
   
   // Check the data is there
   if (empty($debtor_row[0]['debtor_no'])){
     error_log("Couldn't find tax id ".$tax_id." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $branch_row = get_fa_branch_by_debtor($debtor_row);
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with tax id "
       .$tax_id." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $debttran_row = get_last_debtor_trans();
   if (empty($debttran_row[0]['trans_no'])){
     error_log("Warning: Couldn't find a prior customer payment in the database."
     ." will be 1");
@@ -235,19 +239,23 @@ function fa_payment_by_debtor($debtor_no, $amount){
   // Get the data needed
   $fiscalyear_row = get_fa_fiscal_year();
   $debtor_row = get_fa_debtor_by_debtor($debtor_no);
-  $branch_row = get_fa_branch_by_debtor($debtor_row);
-  $debttran_row = get_last_debtor_trans();
   
   // Check the data is there
   if (empty($debtor_row[0]['debtor_no'])){
     error_log("Couldn't find debtor ".$debtor_no." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $branch_row = get_fa_branch_by_debtor($debtor_row);
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with debtor no "
       .$debtor_no." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+    
+  $debttran_row = get_last_debtor_trans();
   if (empty($debttran_row[0]['trans_no'])){
     error_log("Warning: Couldn't find a prior customer payment in the database."
     ." will be 1");
@@ -279,31 +287,37 @@ function fa_payment_by_invoice($invoice_no, $amount){
 
   date_default_timezone_set( $fa['timezone'] );
 
-  // Get the data needed
+  // Get the data needed and verify its there
   $fiscalyear_row = get_fa_fiscal_year();
   $invoice_row = get_fa_invoice_by_no($invoice_no);
-  $debtor_row = get_fa_debtor_by_debtor($invoice_row[0]['debtor_no']);
-  $branch_row = get_fa_branch_by_debtor($debtor_row);
-  $debttran_row = get_last_debtor_trans();
   
-  // Check the data is there
   if (empty($invoice_row[0]['debtor_no'])){
     error_log("Couldn't find invoice ".$invoice_no." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $debtor_row = get_fa_debtor_by_debtor($invoice_row[0]['debtor_no']);
   if (empty($debtor_row[0]['debtor_no'])){
     error_log("Couldn't find debtor ".$debtor_no." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $branch_row = get_fa_branch_by_debtor($debtor_row);
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with debtor no "
       .$debtor_no." in the database");
+    fa_bank_deposit($amount);
     return;
   }
+
+  $debttran_row = get_last_debtor_trans();
   if (empty($debttran_row[0]['trans_no'])){
     error_log("Warning: Couldn't find a prior customer payment in the database."
     ." will be 1");
   }
+
   // clean it up
   $data = array(
     'ref' => date('ymdHis'),

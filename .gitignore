@@ -7,7 +7,7 @@ tags
 # ignore payments.csv
 payments.csv
 
-# ignore config.php
+# ignorei strikeout config.php
 config.php
 
 # ignore frontaccounting configs
@@ -19,3 +19,4 @@ fa-config.php
 
 #ignore error_logs
 error_log
+error.log

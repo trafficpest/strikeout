@@ -6,15 +6,16 @@ $path_to_fa = $path_to_root.'/webhooks/frontaccounting';
 require_once $path_to_root.'/inc/session.php';
 require_once $path_to_fa.'/inc/fa.php';
 
-$db_config_file = $path_to_fa.'/db-config.php';
+$db_config_file = $path_to_fa.'/config/db-config.php';
 if (isset($_POST['dbConfigForm'])){
   $db = update_db_config($db_config_file);
 }else{ $db = load_db_config($db_config_file); }
 
-$fa_config_file = $path_to_fa.'/fa-config.php';
+$fa_config_file = $path_to_fa.'/config/fa-config.php';
 if (isset($_POST['faConfigForm'])){
   $fa = update_fa_config($fa_config_file);
 }else{ $fa = load_fa_config($fa_config_file); }
+
 $fa_users = get_fa_users();
 $bank_accts = get_fa_bank_accts();
 $fa_coa = get_fa_coa();

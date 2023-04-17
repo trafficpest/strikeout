@@ -1,6 +1,6 @@
 <?php
 
-include_once $path_to_root.'/config.php';
+include_once $path_to_root.'/config/config.php';
 
 function issue_strike_invoice(
     $charge_amount, 

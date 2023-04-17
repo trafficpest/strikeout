@@ -9,10 +9,13 @@
 
 <div class="container bg-light shadow rounded mt-5 w-80"
      style="max-width: 480px;">
-
+<div class="p-3">
+<a>
+  <img src="<?=$path_to_root.'/assets/images/logo.png'?>" alt="StrikeOut" 
+        class="rounded img-fluid"></a>
+</div>
 <form class="p-3" 
   action="<?=$path_to_root.'/index.php'?>" method="post">
-  <h1>Strikeout Access</h1>
   <div class="mb-3">
     <label for="username" class="form-label">User:</label>
     <input type="text" class="form-control" id="username" name="username" readonly
