@@ -3,6 +3,9 @@
 $path_to_root = '..'; 
 $path_to_fa = './frontaccounting';
 
+ini_set('log_errors', 1);
+ini_set('error_log', $path_to_root.'/logs/fa.log');
+
 require_once $path_to_root.'/inc/strike.php';
 require_once $path_to_fa.'/inc/payments.php';
 require_once $path_to_fa.'/inc/fa.php';

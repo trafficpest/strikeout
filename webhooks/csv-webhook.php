@@ -1,6 +1,10 @@
 <?php
 
 $path_to_root = '..';
+
+ini_set('log_errors', 1);
+ini_set('error_log', $path_to_root.'/logs/csv.log');
+
 require_once $path_to_root.'/inc/strike.php';
 require_once './csv/inc/csv.php';
 

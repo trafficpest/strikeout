@@ -2,6 +2,9 @@
 
 $path_to_root=".";
 
+ini_set('log_errors', 1);
+ini_set('error_log', $path_to_root.'/logs/checkout.log');
+
 include_once 'inc/strike.php';
 include 'inc/phpqrcode/qrlib.php';
 
