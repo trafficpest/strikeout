@@ -10,7 +10,7 @@ require_once $path_to_root.'/inc/session.php';
 <div class="container bg-light shadow rounded mt-5 w-80">
 <h1 class="text-center pt-3">Welcome</h1>
 <h1 class="text-center"><?=$config['payee_name']?></h1>
-<p class="text-center">Lets get you started</p>
+<p class="text-center pb-2">Lets get you started</p>
 <div class="row p-2">
   <div class="col text-center">
   <a href="<?=$path_to_root.'/pages/invoice.php'?>">
@@ -34,7 +34,7 @@ require_once $path_to_root.'/inc/session.php';
   <p>Configure</p>
   </div>
 </div>
-<h1 class="text-center pt-3">Plugins</h1>
+<h1 class="text-center">Plugins</h1>
 <? include $path_to_root.'/inc/ui/create-plugin-index.php'?>
 </div>
 
