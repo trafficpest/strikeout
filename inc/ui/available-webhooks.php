@@ -6,7 +6,7 @@ $webhook_path = 'https://'.$_SERVER['HTTP_HOST']
   .strtok($_SERVER['REQUEST_URI'], '?');
   
 $webhook_path = str_replace(
-  'webhooks.php',
+  'pages/webhooks.php',
   'webhooks/',
   $webhook_path
 );
