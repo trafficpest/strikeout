@@ -3,13 +3,13 @@
 $path_to_root = '.';
 require_once $path_to_root.'/inc/session.php';
 
-
 ?>
 
 <?include $path_to_root.'/inc/ui/header.php'?>
 
 <div class="container bg-light shadow rounded mt-5 w-80">
 <h1 class="text-center pt-3">Welcome</h1>
+<h1 class="text-center"><?=$config['payee_name']?></h1>
 <p class="text-center">Lets get you started</p>
 <div class="row p-2">
   <div class="col text-center">
@@ -34,6 +34,8 @@ require_once $path_to_root.'/inc/session.php';
   <p>Configure</p>
   </div>
 </div>
+<h1 class="text-center pt-3">Plugins</h1>
+<? include $path_to_root.'/inc/ui/create-plugin-index.php'?>
 </div>
 
 <?include $path_to_root.'/inc/ui/footer.php'?>

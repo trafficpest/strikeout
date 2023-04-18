@@ -37,10 +37,7 @@
             data-bs-toggle="dropdown" aria-haspopup="true" 
              aria-expanded="false" >Webhooks</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" 
-              href="<?=$path_to_root.'/webhooks/csv'?>">CSV Payments</a></li>
-            <li><a class="dropdown-item" href="<?=$path_to_root
-             .'/webhooks/frontaccounting'?>">FrontAccounting</a></li>
+          <?include $path_to_root.'/inc/ui/create-plugin-menu.php'?>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" 
                    href="<?=$path_to_root.'/pages/webhooks.php'?>">Subscriptions
