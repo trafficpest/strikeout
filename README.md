@@ -29,13 +29,14 @@ command from the directory you want to install StrikeOut to:
 
 ### Usage:
 
+- View https://github.com/trafficpest/strikeout/wiki for more clarity.
 Open your web browser and navigate to the directory where you installed 
 StrikeOut. You will get a login screen. The default password is empty 
 (i.e. not set). When you log in, you will enter the configuration page 
 to enter your settings, including your password.
 
 To create an invoice, load `checkout.php` with at least `amount` set 
-in `POST`. `invoice.php` is a test page to generate your invoice and test 
+in `POST` or `GET`. `invoice.php` is a test page to generate invoices and test 
 your settings. You can see a basic HTML form example in the source there.
 
 Strike webhooks are supported and can be created in the app. The app 

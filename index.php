@@ -7,26 +7,25 @@ require_once $path_to_root.'/inc/session.php';
 
 <?include $path_to_root.'/inc/ui/header.php'?>
 
-<div class="container bg-light shadow rounded mt-5 w-80">
-<h1 class="text-center pt-3">Welcome</h1>
-<h1 class="text-center"><?=$config['payee_name']?></h1>
-<p class="text-center pb-2">Lets get you started</p>
-<div class="row p-2">
-  <div class="col text-center">
+<div class="container bg-light p-4 text-center shadow rounded mt-5 w-80">
+<h1 class="text-uppercase">Welcome</h1>
+<h3 class="pb-4"><?=$config['payee_name']?></h3>
+<div class="row pt-4">
+  <div class="col pt-3 mx-2 shadow rounded">
   <a href="<?=$path_to_root.'/pages/invoice.php'?>">
   <img src="<?=$path_to_root.'/assets/images/qr.png'?>" 
         alt="Invoices" 
         class="rounded img-fluid pb-2"></a>
   <p>Create Invoices</p>
   </div>
-  <div class="col text-center">
+  <div class="col pt-3 mx-2 shadow rounded">
   <a href="<?=$path_to_root.'/pages/webhooks.php'?>">
   <img src="<?=$path_to_root.'/assets/images/webhook-icon.png'?>" 
         alt="Webhooks" 
         class="rounded img-fluid pb-2"></a>
   <p>Manage Webhooks</p>
   </div>
-  <div class="col text-center">
+  <div class="col pt-3 mx-2 shadow rounded">
   <a href="<?=$path_to_root.'/pages/setup.php'?>">
   <img src="<?=$path_to_root.'/assets/images/settings.png'?>" 
         alt="Settings" 
@@ -34,7 +33,7 @@ require_once $path_to_root.'/inc/session.php';
   <p>Configure</p>
   </div>
 </div>
-<h1 class="text-center">Plugins</h1>
+<hr class="hr" />
 <? include $path_to_root.'/inc/ui/create-plugin-index.php'?>
 </div>
 

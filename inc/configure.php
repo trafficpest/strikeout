@@ -3,7 +3,7 @@
 function create_strikeout_config(){
   $config = array(
     'api_key' => 'Your strike api-key here',
-    'qr_img_dir' => './qr-images/', 
+    'qr_img_dir' => './qr-images', 
     'payee_name' => 'Your Name / Company Name',
     'action_url' => './index.php',
     'timezone' => 'America/Los_Angeles',
