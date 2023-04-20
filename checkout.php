@@ -18,6 +18,9 @@ if ( empty( $_POST['amount'] ) ){
   echo '<center><h2>No invoice amount was set!</h2></center>';
   exit;
 }
+// null if empty
+if ( empty($_POST['name']) ){$_POST['name'] = null;}
+if ( empty($_POST['custId']) ){$_POST['custId'] = 'No Reference';}
 
 $strike_invoice = issue_strike_invoice( 
   $_POST['amount'], 
