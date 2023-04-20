@@ -6,19 +6,26 @@
       value="<?=$config['payee_name']?>" required>
   </div>
   <div class="mb-3">
-    <label for="apiKey" class="form-label">Api Key:</label>
+    <label for="apiKey" class="form-label">Api Key:</label>    
+    <div class="float-end">
+      <a href="https://strike.me/developer/" target="_blank">Get it Here</a>
+    </div>
     <input type="text" class="form-control"  id="apiKey" name="apiKey"
     value="<?=$config['api_key']?>" required>
   </div>
   <div class="mb-3">
     <label for="qrDir" class="form-label">QR Image Dir:</label>
+    <div class="float-end">
+      <a href="<?=strtok($_SERVER["REQUEST_URI"], '?').'?deleteQr=true'?>">
+        Delete Contents</a>
+    </div>
     <input type="text" class="form-control"  id="qrDir" name="qrDir"
       value="<?=$config['qr_img_dir']?>" >
   </div>
   <div class="mb-3">
     <label for="actionUrl" class="form-label">Redirect After Payment:</label>
-    <input type="text" class="form-control"  id="actionUrl" name="actionUrl" required
-      value="<?=$config['action_url']?>" >
+    <input type="text" class="form-control"  id="actionUrl" name="actionUrl" 
+      value="<?=$config['action_url']?>" required>
   </div>
   <div class="mb-3">
     <label for="timezone" class="form-label">Timezone:</label>
