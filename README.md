@@ -29,8 +29,9 @@ command from the directory you want to install StrikeOut to:
 
 ### Usage:
 
-- View https://github.com/trafficpest/strikeout/wiki for more clarity.
-Open your web browser and navigate to the directory where you installed 
+Visit the wiki https://github.com/trafficpest/strikeout/wiki for more clarity.
+
+- O pen your web browser and navigate to the directory where you installed 
 StrikeOut. You will get a login screen. The default password is empty 
 (i.e. not set). When you log in, you will enter the configuration page 
 to enter your settings, including your password.
