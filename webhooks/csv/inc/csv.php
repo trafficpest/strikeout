@@ -1,5 +1,7 @@
 <?php
 
+require_once $path_to_csv.'/inc/download.php';
+
 function append_csv_file( $file, $csv_line, $header_line ){
   // csv_line and header_line should be arrays
 
@@ -27,17 +29,6 @@ function get_csv_file($file){
     $data[] = 'No CSV data available';
     return $data;
   }
-  /*
-  // append row to end of file    
-  $csvfile = fopen( $file, 'r') 
-    or die("Unable to open file!");
-
-  while (($data = fgetcsv($csvfile)) !== false){
-    $csv_lines[] = $data;
-  }
-  fclose($csvfile);
-  return $csv_lines;
-   */
     $rows   = array_map('str_getcsv', file($file));
     $header = array_shift($rows);
     $csv    = array();

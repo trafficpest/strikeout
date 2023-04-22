@@ -1,6 +1,6 @@
 <?php 
 
-$path_to_root = '..';
+$path_to_root = '../..';
 require $path_to_root.'/inc/strike.php';
 
 header('Content-Type: text/event-stream'); 

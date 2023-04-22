@@ -26,7 +26,7 @@ function stopTimer(){
 }
 
 if(typeof(EventSource) !== "undefined" ) {
-  var source = new EventSource( path_to_root + "/inc/pay-status.php"
+  var source = new EventSource( path_to_root + "assets/sse/pay-status.php"
       + "?invoiceId=" + invoiceId );
   source.onmessage = function(event) {
     if (event.data == 'PAID'){

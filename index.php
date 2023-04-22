@@ -9,7 +9,7 @@ require_once $path_to_root.'/inc/session.php';
 
 <div class="container bg-light p-4 text-center shadow rounded mt-5 w-80">
 <h1 class="text-uppercase">Welcome</h1>
-<h3 class="pb-4"><?=$config['payee_name']?></h3>
+<h3 class="text-muted pb-4"><?=$config['payee_name']?></h3>
 <div class="row pt-4">
   <div class="col pt-3 mx-2 shadow rounded">
   <a href="<?=$path_to_root.'/pages/invoice.php'?>">

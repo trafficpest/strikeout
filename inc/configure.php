@@ -57,4 +57,34 @@ function update_config($config_file, $config=null) {
   return $config;
 }
 
+function update_file_permissions($files){
+  foreach ($files as $file => $perms){
+      chmod ($file, $perms);
+  }
+}
+
+function check_file_permissions($files){
+  // check array of files to perms if all match return true
+  foreach ($files as $file => $perms){
+    if ( $perms !== (fileperms($file) & 0777) ){
+      return false;
+    }
+  }
+  return true;
+}
+function set_so_permissions($path_to_root){
+  
+  $dirs = array(
+    $path_to_root.'/config' => 0750,
+    $path_to_root.'/inc' => 0750,
+    $path_to_root.'/logs' => 0750,
+    $path_to_root.'/webhooks/csv/inc' => 0750,
+    $path_to_root.'/webhooks/csv/private' => 0750,
+    $path_to_root.'/webhooks/frontaccounting/inc' => 0750,
+    $path_to_root.'/webhooks/frontaccounting/config' => 0750
+  );
+
+  update_file_permissions($dirs);
+}
+
 ?>

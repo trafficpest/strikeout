@@ -1,5 +1,5 @@
 body {
-  background-color: #f2f2f2;
+  background-color: #eeeeee;
     :margin: 0;
 }
 
@@ -9,7 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  background-color: #f2f2f2;
+  background-color: #eeeeee;
 }
 
 .inv-container p {
@@ -56,24 +56,6 @@ width: 60%;
   font-size: 16px;
 }
 
-form {
-width: 80%;
-margin: 20px auto 0;
-text-align: left;
-background-color: white;
-border-radius: 5px;
-box-shadow: 0 2px 4px rgba(0,0,0,.3);
-padding: 20px;
-font-family: 'Helvetica Neue', sans-serif;
-}
-
-label {
-display: block;
-margin-bottom: 10px;
-font-weight: bold;
-font-size: 16px;
-}
-
 input[type="text"] {
 padding: 10px;
 border-radius: 4px;
@@ -82,41 +64,6 @@ width: 100%;
 margin-bottom: 15px;
 font-size: 16px;
 box-sizing: border-box;
-}
-
-input[type="password"] {
-padding: 10px;
-border-radius: 4px;
-border: 1px solid #ccc;
-width: 100%;
-margin-bottom: 15px;
-font-size: 16px;
-box-sizing: border-box;
-}
-
-select {
-padding: 10px;
-border-radius: 4px;
-border: 1px solid #ccc;
-width: 100%;
-margin-bottom: 15px;
-font-size: 16px;
-box-sizing: border-box;
-}
-
-
-input[type="submit"] {
-background-color: #4CAF50;
-color: white;
-padding: 10px 20px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 16px;
-}
-
-input[type="submit"]:hover {
-background-color: #45a049;
 }
 
 button {
@@ -131,24 +78,6 @@ button {
 
 button:hover {
   background-color: #45a049;
-}
-
-table {
-  width: 100%;
-}
-
-th {
-  padding: 15px;
-  text-align: center;
-}
-
-td {
-  padding: 15px;
-  text-align: center;
-}
-
-h1 {
-margin-top: 0;
 }
 
 #result {
