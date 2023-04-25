@@ -8,10 +8,14 @@ ini_set('error_log', $path_to_root.'/logs/checkout.log');
 include_once 'inc/strike.php';
 include 'inc/phpqrcode/qrlib.php';
 
+// Set Action Url from default config if not set
+if (empty($_POST['action_url'])){$_POST['action_url'] = $config['action_url'];}
+
 //Use url variables first if available
 if ( isset($_GET['amount']) ){ $_POST['amount'] = $_GET['amount']; }
 if ( isset($_GET['name']) ) {$_POST['name'] = $_GET['name']; }
 if ( isset($_GET['custId']) ) {$_POST['custId'] = $_GET['custId']; }
+if ( isset($_GET['action_url']) ) {$_POST['action_url'] = $_GET['action_url']; }
 
 // error if amount wasn't set
 if ( empty( $_POST['amount'] ) ){
@@ -101,7 +105,7 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_L, 4 );
 
 <script> 
   var path_to_root = "<?=$path_to_root?>";
-  var action_url = "<?=$config['action_url']?>";
+  var action_url = "<?=$_POST['action_url']?>";
   var invoiceId = "<?=$strike_invoice['invoiceId']?>";
   var seconds = <?=$strike_quote['expirationInSec']?>;
 </script>
