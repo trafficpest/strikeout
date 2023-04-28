@@ -1,18 +1,5 @@
 <?php
 
-function create_strikeout_config(){
-  $config = array(
-    'api_key' => 'Your strike api-key here',
-    'qr_img_dir' => 'qr-images', 
-    'payee_name' => 'Your Name / Company Name',
-    'action_url' => './index.php',
-    'timezone' => 'America/Los_Angeles',
-    'secret' => '' 
-  );
-
-  return $config;
-}
-
 function load_config($config_file, $config=null) {
   
 // If config file exists, return the config array
@@ -23,15 +10,16 @@ function load_config($config_file, $config=null) {
 
   } else {
     // If config file does not exist, create it with default values
-    // from the $config arg if null make strikeout config
+    // from the $config arg if null log and return null
 
    if (is_null($config)){ 
-    $config = create_strikeout_config();
+    error_log('$config array was not set prior to creating');
+    return null;
    }
 
     $config_string = '<?php $config = ' . var_export($config, true) . ';';
     file_put_contents($config_file, $config_string);
-    chmod( $config_file, 0600);
+    chmod( $config_file, 0640);
 
     // Return the config array
     return $config;
@@ -40,20 +28,14 @@ function load_config($config_file, $config=null) {
 
 function update_config($config_file, $config=null) {
   //update config_file with $config array if array is not set it
-  //will update it as a strikeout config
+  //will log and return null
   if (is_null($config)){
-    $config = array( 
-      'api_key' => $_POST['apiKey'], 
-      'qr_img_dir' => $_POST['qrDir'],
-      'payee_name' => $_POST['payeeName'],
-      'action_url' => $_POST['actionUrl'],
-      'timezone' => $_POST['timezoneSelect'],
-      'secret' => $_POST['secret'] 
-    );
+    error_log('$config array was not set prior updating');
+    return null;
   }
   $config_string = '<?php $config = ' . var_export($config, true) . ';';
   file_put_contents($config_file, $config_string);
-  chmod( $config_file, 0600);
+  chmod( $config_file, 0640);
   return $config;
 }
 
@@ -71,20 +53,6 @@ function check_file_permissions($files){
     }
   }
   return true;
-}
-function set_so_permissions($path_to_root){
-  
-  $dirs = array(
-    $path_to_root.'/config' => 0750,
-    $path_to_root.'/inc' => 0750,
-    $path_to_root.'/logs' => 0750,
-    $path_to_root.'/webhooks/csv/inc' => 0750,
-    $path_to_root.'/webhooks/csv/private' => 0750,
-    $path_to_root.'/webhooks/frontaccounting/inc' => 0750,
-    $path_to_root.'/webhooks/frontaccounting/config' => 0750
-  );
-
-  update_file_permissions($dirs);
 }
 
 ?>
