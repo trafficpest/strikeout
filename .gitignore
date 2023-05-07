@@ -15,6 +15,7 @@ plugins.php
 # ignore frontaccounting configs
 db-config.php
 fa-config.php
+*fa-config.php
 
 #ignore swap files
 *.swp
