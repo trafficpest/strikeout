@@ -1,5 +1,6 @@
-<form class="p-3" action="<?=$path_to_fa.'/index.php'?>" method="post">
-  <h1>Configure FA SQL Database</h1>
+<form class="bg-light rounded p-3 mb-3" 
+  action="<?=$path_to_fa.'/index.php'?>" method="post">
+  <h3>FA SQL Database</h3>
   <div class="mb-3">
     <label for="hostname" class="form-label">Hostname:</label>
     <input type="text" class="form-control"  id="hostname" name="hostname"

@@ -1,10 +1,17 @@
 <?php
 
-$path_to_strike = '.';
 $path_to_root="../..";
+$path_to_strike=".";
 
-include_once $path_to_so.'inc/strike.php';
-include $path_to_root.'inc/phpqrcode/qrlib.php';
+ini_set('log_errors', 1);
+ini_set('error_log', $path_to_root.'/logs/strike.log');
+
+require_once $path_to_root.'/inc/strikeout.php';
+require_once $path_to_strike.'/inc/strike.php';
+require_once $path_to_root.'/inc/phpqrcode/qrlib.php';
+
+$strikeout = load_strikeout_config($path_to_root.'/config/config.php');
+$strike = load_strike_config($path_to_strike.'/config/config.php');
 
 // Set Action Url from default config if not set
 if (empty($_POST['action_url'])){$_POST['action_url']=$strikeout['action_url'];}
@@ -44,7 +51,7 @@ if ( !isset( $strike_invoice['invoiceId'] ) ){
 
 $strike_quote = issue_strike_quote( $strike_invoice['invoiceId'] );
 
-$file = $strikeout['tmp_dir'].'/'.uniqid().'.png';
+$file = $path_to_root.'/'.$strikeout['tmp_dir'].'/'.uniqid().'.png';
 QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_L, 4 );
 
 ?>

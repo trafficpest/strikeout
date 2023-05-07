@@ -1,5 +1,20 @@
-<form class="p-3" action="<?=$path_to_fa.'/index.php'?>" method="post">
-  <h1>Configure FA Settings</h1>
+<?php
+if ($fa_users[0] === 'ERROR'){
+  //Database connection error
+  echo '<div class="bg-light rounded p-3 mb-3">'
+    .'<h3 class="text-center p-3">Unable to connect to FA Database</h3>'
+    .'</div>';
+} elseif ($fa_users === '0 results'){
+  //No company data found in database
+  echo '<div class="bg-light rounded p-3 mb-3">'
+    .'<h3 class="text-center p-3">Database Connected:</h3>'
+    .'<p class="text-center p-3">No company found. Is Table Pref correct?</p>'
+    .'</div>';
+}else { 
+  //database and company found ?>
+<form class="bg-light rounded p-3 mb-3" 
+  action="<?=$path_to_fa.'/index.php'?>" method="post">
+  <h3>FA Settings</h3>
   <div class="mb-3">
     <label for="userLogin" class="form-label">FA Login:</label>
     <select class="form-control" id="userLogin" name="userLogin">
@@ -87,4 +102,5 @@ foreach ($fa_coa as $account){
     });
   }
 </script>
+<? }
 

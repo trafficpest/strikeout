@@ -1,14 +1,16 @@
 # ignore vim tags
 tags
 
-# ignore testing qr images
-/qr-images/*
+# ignore testing tmp
+/tmp/*
 
 # ignore payments.csv
-payments.csv
+*.csv
 
-# ignorei strikeout config.php
+# ignore strikeout config.php
 config.php
+methods.php
+plugins.php
 
 # ignore frontaccounting configs
 db-config.php

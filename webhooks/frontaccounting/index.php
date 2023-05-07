@@ -23,29 +23,18 @@ $fa_coa = get_fa_coa();
 ?>
 
 <?include $path_to_root.'/inc/ui/header.php'?>
-<div class="row">
-<div class="container bg-light shadow rounded mt-5 w-80"
-     style="max-width: 480px;">
-<?include $path_to_fa.'/inc/ui/db-config-form.php'?>
-</div>
 
-<div class="container bg-light shadow rounded mt-5 w-80"
-     style="max-width: 480px;">
-<?
-if ($fa_users[0] === 'ERROR'){
-  //Database connection error
-  echo '<h3 class="p-3">Unable to connect to FA Database</h3>';
-} elseif ($fa_users === '0 results'){
-  //No company data found in database
-  echo '<h3 class="p-3">Database Connected:</h3>'
-    .'<p class="p-3">No company found. Is Table Pref correct?</p>';
-}else {
-  //database and company found
-  include $path_to_fa.'/inc/ui/fa-config-form.php';
-}
-?>
-
-</div>
+<h1 class="text-white p-3">FrontAccounting</h1>
+<div class="container mt-5 bg-secondary rounded p-3 mb-3">  
+<h1 class="text-white text-center p-3">Configure</h1>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <?include $path_to_fa.'/inc/ui/db-config-form.php'?>
+    </div>
+    <div class="col-12 col-md-6">
+      <?include $path_to_fa.'/inc/ui/fa-config-form.php'?>
+    </div>
+  </div>
 </div>
 
 <?include $path_to_root.'/inc/ui/footer.php'?>

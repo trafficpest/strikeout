@@ -1,6 +1,7 @@
 <?php
 
-require_once $path_to_csv.'/inc/download.php';
+ini_set('error_log', $path_to_root.'/logs/csv.log');
+require_once $path_to_root.'/webhooks/csv/inc/download.php';
 
 function append_csv_file( $file, $csv_line, $header_line ){
   // csv_line and header_line should be arrays

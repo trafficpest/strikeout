@@ -13,7 +13,7 @@
 <body class="bg-dark">
 <nav class="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-  <a class="navbar-brand" href="<?=$path_to_root.'/index.php'?>">
+  <a class="navbar-brand" href="<?=$path_to_root?>">
   <img src="<?=$path_to_root.'/assets/images/logo.png'?>" alt="StrikeOut" 
         class="rounded" width="140" height="60"></a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" i
@@ -25,23 +25,22 @@
       <ul class="navbar-nav">
         <li class="navbar-item">
           <a class="nav-link" 
-            href="<?=$path_to_root.'/pages/invoice.php'?>">Invoice</a>
-        </li>
-        <li class="navbar-item">
-          <a class="nav-link" 
-            href="<?=$path_to_root.'/pages/setup.php'?>">Configure</a>
+            href="<?=$path_to_root.'/pages'?>">StrikeOut</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"           
-            href="<?=$path_to_root.'/pages/webhooks.php'?>" role="button"  
+          <a class="nav-link dropdown-toggle" role="button"  
+            data-bs-toggle="dropdown" aria-haspopup="true" 
+             aria-expanded="false" >Methods</a>
+          <ul class="dropdown-menu">
+          <?include $path_to_root.'/inc/ui/create-method-nav.php'?>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button"  
             data-bs-toggle="dropdown" aria-haspopup="true" 
              aria-expanded="false" >Webhooks</a>
           <ul class="dropdown-menu">
-          <?include $path_to_root.'/inc/ui/create-plugin-menu.php'?>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" 
-                   href="<?=$path_to_root.'/pages/webhooks.php'?>">Subscriptions
-                </a></li>
+          <?include $path_to_root.'/inc/ui/create-webhook-nav.php'?>
           </ul>
         </li>
         <li class="navbar-item">

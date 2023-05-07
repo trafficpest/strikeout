@@ -11,28 +11,15 @@ require_once $path_to_root.'/inc/strikeout.php';
 session_start();
 
 if (!isset($strikeout)){
-  $default_config = array(
-    'api_key' => 'Your strike api-key here',
-    'qr_img_dir' => 'qr-images', 
-    'payee_name' => 'Your Name / Company Name',
-    'action_url' => './index.php',
-    'timezone' => 'America/Los_Angeles',
-    'secret' => '' 
-  );
-
-  $strikeout = load_config( 
-    $path_to_root.'/config/config.php', 
-    $default_config 
-  );
-
+  $strikeout = load_strikeout_config($path_to_root.'/config/config.php');
 }
 
 if ( isset($_GET['logout']) ) {
     session_destroy();
 }
 if (isset($_POST['login'])){
-  if ($_POST['password'] === $config['secret']) {
-    $_SESSION['user'] = $config['payee_name'];
+  if ($_POST['password'] === $strikeout['password']) {
+    $_SESSION['user'] = $strikeout['payee_name'];
   }
 }
 

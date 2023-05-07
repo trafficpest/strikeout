@@ -17,7 +17,8 @@ function load_config($config_file, $config=null) {
     return null;
    }
 
-    $config_string = '<?php $config = ' . var_export($config, true) . ';';
+   $config_string = '<?php'
+     ."\n\n".'$config = ' . var_export($config, true) . ';';
     file_put_contents($config_file, $config_string);
     chmod( $config_file, 0640);
 
@@ -33,9 +34,23 @@ function update_config($config_file, $config=null) {
     error_log('$config array was not set prior updating');
     return null;
   }
-  $config_string = '<?php $config = ' . var_export($config, true) . ';';
+  $config_string = '<?php'
+    ."\n\n".'$config = ' . var_export($config, true) . ';';
   file_put_contents($config_file, $config_string);
   chmod( $config_file, 0640);
+  return $config;
+}
+
+function load_plugin_config($file){
+  if (file_exists($file)) {
+
+    include $file;
+    return $config;
+  }
+}
+
+function save_plugin_config($file){
+  $config = update_config($file, $_POST);
   return $config;
 }
 

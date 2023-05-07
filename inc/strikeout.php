@@ -2,6 +2,37 @@
 
 require_once($path_to_root.'/inc/configure.php');
 
+function load_strikeout_config($file){
+
+  $default_config = array(
+    'tmp_dir' => 'tmp', 
+    'payee_name' => 'Your Name / Company Name',
+    'action_url' => './index.php',
+    'timezone' => 'America/Los_Angeles',
+    'password' => '' 
+  );
+
+  $strikeout = load_config( 
+    $file, 
+    $default_config 
+  );
+  
+  return $strikeout;
+}
+
+function update_strikeout_config($file){
+
+    $config = array( 
+      'payee_name' => $_POST['payeeName'],
+      'password' => $_POST['password'], 
+      'tmp_dir' => $_POST['tmpDir'],
+      'action_url' => $_POST['actionUrl'],
+      'timezone' => $_POST['timezoneSelect'],
+    );
+  
+  update_config($file, $config);
+  return $config;
+}
 
 function set_so_permissions($path_to_root){
   

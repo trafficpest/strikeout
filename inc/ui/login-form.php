@@ -15,11 +15,11 @@
         class="rounded img-fluid"></a>
 </div>
 <form class="p-3" 
-  action="<?=$path_to_root.'/index.php'?>" method="post">
+  action="<?=$path_to_root?>" method="post">
   <div class="mb-3">
     <label for="username" class="form-label">User:</label>
     <input type="text" class="form-control" id="username" name="username" readonly
-      value="<?=$config['payee_name']?>">
+      value="<?=$strikeout['payee_name']?>">
   </div>
   <div class="mb-3">
     <label for="username" class="form-label">User:</label>

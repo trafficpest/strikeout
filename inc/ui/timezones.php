@@ -631,5 +631,5 @@
 
 <script>
   var timezoneSelect = document.getElementById("timezoneSelect");
-  timezoneSelect.value = "<?=$config['timezone']?>";
+  timezoneSelect.value = "<?=$strikeout['timezone']?>";
 </script>

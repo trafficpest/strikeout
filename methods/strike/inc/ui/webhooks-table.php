@@ -4,8 +4,8 @@ $subscriptions = get_strike_subscriptions();
 
 ?>
 
-<form class="p-3" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
-<h1>Webhook Subscriptions</h1>
+<form class="p-3 mx-1 bg-light shadow rounded" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
+<h3>Active Subscriptions</h3>
 <div style="overflow-x:auto;">
 <table class="table center">
 <thead class="thead">

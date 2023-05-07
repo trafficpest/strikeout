@@ -1,5 +1,7 @@
 <?php
 
+ini_set('error_log', $path_to_root.'/logs/frontaccounting.log');
+
 require_once $path_to_fa.'/inc/sql.php';
 require_once $path_to_root.'/inc/configure.php';
 
@@ -83,13 +85,13 @@ function update_db_config($config_file){
 }
 
 function load_fa_config($config_file){
-  global $config;
+  global $strikeout;
   $fa_default_config = array(
     'user_login' => '',
     'bank_acct_name' => '',
     'debit_acct' => '',
     'credit_acct' => '',
-    'timezone' => $config['timezone'],
+    'timezone' => $strikeout['timezone'],
     'acct_option' => ''
     );
 
@@ -98,14 +100,14 @@ function load_fa_config($config_file){
 }
 
 function update_fa_config($config_file){
-  global $config;
+  global $strikeout;
 
   $fa = array(
     'user_login' => $_POST['userLogin'],
     'bank_acct_name' => $_POST['bankAcctName'],
     'debit_acct' => $_POST['debitAcct'],
     'credit_acct' => $_POST['creditAcct'],
-    'timezone' => $config['timezone'],
+    'timezone' => $strikeout['timezone'],
     'acct_option' => $_POST['acctOption']
   );
   

@@ -1,5 +1,6 @@
-<form class="p-3 bg-light shadow rounded m-1" action="<?=$path_to_root.'/checkout.php'?>" method="post">
-  <h3>Create Invoice</h3>
+<form class="p-3 bg-light shadow rounded mx-1" action="<?=$path_to_strike?>" 
+  method="post">
+  <h3>Test Invoice</h3>
   <div class="mb-3">
     <label for="name" class="form-label">Name:</label>
     <input type="text" class="form-control" id="name" name="name">

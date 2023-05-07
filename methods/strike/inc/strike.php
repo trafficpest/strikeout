@@ -1,18 +1,25 @@
 <?php
 
-ini_set('log_errors', 1);
 ini_set('error_log', $path_to_root.'/logs/strike.log');
 
 require_once $path_to_root.'/inc/configure.php';
 
-function load_strike_config($file){
-  $default_config = array(
-    'hostname' => 'localhost',
-    'username' => 'sql user here',
-    'password' => 'password here',
-    'db_name' => 'sql db name',
-    'table_pref' => '0_'
+function set_strike_permissions($path_to_strike){
+  
+  $dirs = array(
+    $path_to_strike.'/config' => 0750,
+    $path_to_strike.'/inc' => 0750,
   );
+
+  update_file_permissions($dirs);
+}
+
+function load_strike_config($file){
+
+  $default_config = array(
+      'api_key' => 'Your strike api key here', 
+      'secret' => 'Make a webhook password', 
+    );
 
   $strike = load_config($file, $default_config);
   return $strike;
@@ -22,15 +29,11 @@ function update_strike_config($file){
 
     $config = array( 
       'api_key' => $_POST['apiKey'], 
-      'qr_img_dir' => $_POST['qrDir'],
-      'payee_name' => $_POST['payeeName'],
-      'action_url' => $_POST['actionUrl'],
-      'timezone' => $_POST['timezoneSelect'],
       'secret' => $_POST['secret'] 
     );
   
   update_config($file, $config);
-  return $strike;
+  return $config;
 }
 
 function issue_strike_invoice(
@@ -45,12 +48,12 @@ function issue_strike_invoice(
 
   $correlationId = $correlationId.'|'.uniqid();
   
-  global $strike;  
+  global $strikeout, $strike;  
 
   $post_data = array(
     'correlationId' => $correlationId,
     'description' => 'Payment to '
-                      .$strike['payee_name']                 
+                      .$strikeout['payee_name']                 
                       .' from '
                       .$customer_name,
     'amount' => array(
