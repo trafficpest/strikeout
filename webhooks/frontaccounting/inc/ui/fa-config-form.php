@@ -1,4 +1,5 @@
 <?php
+if (isset($fa_users)){
 if ($fa_users[0] === 'ERROR'){
   //Database connection error
   echo '<div class="bg-light rounded p-3 mb-3">'
@@ -111,4 +112,4 @@ else {
 // no payment method selected
   include $path_to_fa.'/inc/ui/fa-config-select.php';
 }
-
+}
