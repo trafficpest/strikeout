@@ -29,6 +29,6 @@
     <input type="hidden" id="dbConfigForm" name="dbConfigForm" 
     value="true" >
   <div class="mb-3">
-    <button type="submit" class="btn btn-warning" value="Submit">Submit</button>
+    <button type="submit" class="btn btn-warning" value="Submit">Save</button>
   </div>
 </form>

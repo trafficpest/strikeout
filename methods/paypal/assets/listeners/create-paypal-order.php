@@ -21,6 +21,7 @@ if (isset($post_data['strikeout']['amount'])){
         'currency_code' => 'USD',
         'value' => $post_data['strikeout']['amount'],
         ),
+        'custom_id' => $post_data['strikeout']['custId'],
       ),
     ),
   );

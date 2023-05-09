@@ -11,7 +11,7 @@
   <div class="mb-3">
     <label for="secret" class="form-label">Webhook Secret</label>
     <input type="text" class="form-control"  id="secret" name="secret" 
-    value="<?=$strike['secret']?>" required>
+    value="<?=$strike['secret']?>" minlength="10" required>
   </div>
     <input type="hidden" id="configForm" name="configForm" 
     value="true" >

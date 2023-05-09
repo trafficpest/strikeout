@@ -10,6 +10,13 @@ require_once $path_to_fa.'/inc/fa.php';
 $db = load_db_config($path_to_fa.'/config/db-config.php');
 $fa = load_fa_config($path_to_fa.'/config/'.$method.'-fa-config.php');
 
+// check that config setting has been set for method first
+foreach ($fa as $setting){
+  if ($setting == ''){
+    error_log('FA Config '.$setting.' was not set for '.$method.' had to exit');
+    exit;
+  }
+}
 
 if (isset ($plugin_payload['Amount']) ){
   if ($fa['acct_option'] == 'tax_id'){

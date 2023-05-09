@@ -10,8 +10,10 @@ if ($fa_users[0] === 'ERROR'){
     .'<h3 class="text-center p-3">Database Connected:</h3>'
     .'<p class="text-center p-3">No company found. Is Table Pref correct?</p>'
     .'</div>';
-}else { 
-  //database and company found ?>
+}elseif (isset($_POST['paymentMethod']) && $_POST['paymentMethod'] !== '') {
+  //database and company found
+  include $path_to_fa.'/inc/ui/fa-config-select.php';
+?>
 <form class="bg-light rounded p-3 mb-3" 
   action="<?=$path_to_fa.'/index.php'?>" method="post">
   <h3>FA Settings</h3>
@@ -74,10 +76,12 @@ foreach ($fa_coa as $account){
     <option value="tax_id">Customer Payment (Tax ID)</option>
     </select>
   </div>
+    <input type="hidden" id="hiddenMethod" name="paymentMethod" 
+    value="<?=$_POST['paymentMethod']?>" >
     <input type="hidden" id="faConfigForm" name="faConfigForm" 
     value="true" >
   <div class="mb-3">
-    <button type="submit" class="btn btn-warning" value="Submit">Submit</button>
+    <button type="submit" class="btn btn-warning" value="Submit">Save</button>
   </div>
 </form>
 <script>
@@ -103,4 +107,8 @@ foreach ($fa_coa as $account){
   }
 </script>
 <? }
+else {
+// no payment method selected
+  include $path_to_fa.'/inc/ui/fa-config-select.php';
+}
 
