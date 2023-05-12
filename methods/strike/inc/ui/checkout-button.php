@@ -7,12 +7,11 @@
       value="<?=$_POST['action_url']?>">
     <input type="hidden" id="amount" name="amount" 
       value="<?=$_POST['amount']?>">
-    <div class="d-grid gap-3 mb-3" style="max-width: 749px;">
-    <button class="btn btn-success p-3" type="submit">
+    <button type="submit">
       <img 
         src="<?=$path_to_root?>/methods/strike/assets/images/btc-lightning.png" 
         height="24px" alt="Bitcoin"></button>  
-    <p class="text-center fst-italic fw-lighter fs-6">Powered by <strong>Strike</strong></p>
+    <p>Powered by <a href="https://strike.me" target="_blank">Strike<a/></p>
     </div>
 </form>
 </div>

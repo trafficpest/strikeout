@@ -1,0 +1,41 @@
+body {
+  background-color: lightgrey;
+}
+
+#strikeout-button-container {
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  margin: auto;
+  width: 480px;
+  padding: 15px;
+  border: 1px;
+  border-radius: 5px;
+}
+
+#strike-button-container {
+  text-align: center;
+  width: 100%;
+  max-width: 749px;
+}
+
+#strike-button-container button {
+  width: 100%;
+  padding: 10px; 
+  border: 0px; 
+  border-radius: 5px; 
+  background-color: seagreen; 
+}
+
+#strike-button-container p {
+  color: grey; 
+  text-align: center; 
+  font-size: 0.85em; 
+  font-style: italic;
+}
+
+#strike-button-container a {
+  color: black; 
+  font-weight: bold; 
+  font-size: 1.0em;
+}

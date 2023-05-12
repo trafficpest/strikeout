@@ -43,7 +43,11 @@ function set_so_permissions($path_to_root){
     $path_to_root.'/webhooks/csv/inc' => 0750,
     $path_to_root.'/webhooks/csv/private' => 0750,
     $path_to_root.'/webhooks/frontaccounting/inc' => 0750,
-    $path_to_root.'/webhooks/frontaccounting/config' => 0750
+    $path_to_root.'/webhooks/frontaccounting/config' => 0750,
+    $path_to_root.'/methods/strike/config' => 0750,
+    $path_to_root.'/methods/strike/inc' => 0750,
+    $path_to_root.'/methods/paypal/config' => 0750,
+    $path_to_root.'/methods/paypal/inc' => 0750,
   );
 
   update_file_permissions($dirs);
