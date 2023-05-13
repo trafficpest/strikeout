@@ -14,13 +14,15 @@
 !/themes/cool
 !/lang/en_US
 !/lang/new_language_template
-tags
-error_log
-*.swp
 installed_languages.inc
 installed_extensions.php
 config.php
 config_db.php
 !index.php
+
+#added for strikeout version
 !methods.php
 !plugins.php
+tags
+error_log
+*.swp
