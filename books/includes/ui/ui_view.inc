@@ -1526,9 +1526,12 @@ function display_backtrace($cond=true, $msg='') {
 //
 if (!isset($payment_services))
 {
+  $request_url = "https://".$_SERVER['HTTP_HOST'].strtok($_SERVER['REQUEST_URI'], '?');
+  $request_url = str_replace('/reporting/reports_main.php', '/..', $request_url );
+
 	$payment_services = array(
 		'PayPal' => "https://www.paypal.com/xclick?business=<company_email>&item_name=<comment>&amount=<amount>&currency_code=<currency>",
-		'StrikeOut' => "https://btspec.org/demo/strikeout/checkout.php?amount=<amount>&custId=<invoice>",
+		'StrikeOut' => $request_url."/checkout.php?amount=<amount>&custId=<invoice>",
 	);
 }
 /*
