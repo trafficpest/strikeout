@@ -24,4 +24,6 @@ fa-config.php
 error_log
 *.log
 
+!/books
+
 

@@ -21,8 +21,6 @@ config_db.php
 !index.php
 
 #added for strikeout version
-!methods.php
-!plugins.php
 tags
 error_log
 *.swp
