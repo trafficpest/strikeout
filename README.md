@@ -25,7 +25,7 @@ entries in your accounting software.
 
 ### Installation:
 
-- To use the bleeding edge repo (Could have bugs)
+- To use the current release
 1. Download the latest StrikeOut release zip file 
 2. On the desired web server in a hosted folder navigate to the parent 
 directory where you wish to install StrikeOut create a directory and unzip
