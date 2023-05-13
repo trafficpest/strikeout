@@ -5,7 +5,7 @@ $checkout_url = 'https://'.$_SERVER['HTTP_HOST']
   .strtok($_SERVER['REQUEST_URI'], '?');
 
 $checkout_url = str_replace(
-  'pages/invoice.php',
+  'pages/',
   'checkout.php',
   $checkout_url);
 
@@ -14,14 +14,13 @@ $query = '?amount='.urlencode($_POST['amount'])
   .'&custId='.urlencode($_POST['custId'])
   .'&action_url='.urlencode($_POST['action_url']);
 
-$file = $path_to_root.'/'.$config['qr_img_dir'].'/static_l.png';
+$file = $path_to_root.'/'.$strikeout['tmp_dir'].'/static_l.png';
 QRcode::png( $checkout_url.$query, $file, QR_ECLEVEL_L);
 ?>
 
-<div class="container">
-<div class="bg-light shadow rounded mt-3 mx-1">
-  <h3 class="ps-3 pt-3">Static Invoice</h3>
-  <p class="ms-3">Copy and paste this URL or image anywhere you want. For 
+<div class="p-3 bg-light shadow rounded mx-1">
+  <h3>Static Invoice</h3>
+  <p class="text-center m-3">Copy and paste this URL or image anywhere you want. For 
     example, paper invoices, in store, or emails.</p>
   <div class="row">
     <div class="col-12 text-center">
@@ -46,7 +45,6 @@ QRcode::png( $checkout_url.$query, $file, QR_ECLEVEL_L);
       </button>
     </div>
   </div>
-</div>
 </div>
 <script src="<?=$path_to_root?>/assets/js/copyInvoice.js"></script>
 

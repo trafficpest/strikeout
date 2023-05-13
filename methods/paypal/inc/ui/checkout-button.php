@@ -43,7 +43,7 @@
             const transaction = orderData.purchase_units[0].payments.captures[0];
             //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
             // When ready to go live, remove the alert and show a success message within this page. For example:
-            const element = document.getElementById('paypal-button-container');
+            const element = document.getElementById('strikeout-button-container');
             element.innerHTML = '<center><h3>Thank you for your payment!</h3>'
               + '<a href="<?=$_POST['action_url']?>">Continue</a>';
           });

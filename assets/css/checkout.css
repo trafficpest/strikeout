@@ -7,7 +7,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: white;
   margin: auto;
-  width: 480px;
+  max-width: 480px;
   padding: 15px;
   border: 1px;
   border-radius: 5px;

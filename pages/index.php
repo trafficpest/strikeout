@@ -4,6 +4,7 @@ $path_to_root = '..';
 $path_to_strike = '..';
 require_once $path_to_root.'/inc/session.php';
 require_once $path_to_root.'/inc/strikeout.php';
+require_once $path_to_root.'/inc/phpqrcode/qrlib.php';
 
 if (isset($_POST['configForm'])){
   $strikeout = update_strikeout_config(
@@ -23,11 +24,29 @@ if ( isset($_POST['activatePlugin']) ){
 
 <?include $path_to_root.'/inc/ui/header.php'?>
 
+<h1 class="text-white p-3">StrikeOut</h1>
 <div class="container bg-light shadow rounded mt-5 mb-3">
 <?include $path_to_root.'/inc/ui/perms-form.php'?>
 </div>
 
-<div class="container bg-secondary shadow rounded p-3">
+<div class="container bg-secondary shadow rounded p-3 mb-3">
+  <h1 class="text-center text-white p-1">Invoices</h1>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <?include $path_to_root.'/inc/ui/create-invoice-form.php'?>
+    </div>    
+    <div class="col-12 col-md-6 mb-3">
+      <?include $path_to_root.'/inc/ui/static-invoice-form.php'?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mb-3">
+      <?include $path_to_root.'/inc/ui/static-invoice.php'?>
+    </div>
+  </div>
+</div>
+
+<div class="container bg-secondary rounded p-3 mb-3">
 <h1 class="text-center text-white p-1">Configuration</h1>
 <div class="row">
 <div class="col-md-12 col-lg-6 mb-3">

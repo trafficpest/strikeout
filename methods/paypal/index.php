@@ -26,9 +26,12 @@ if ( empty( $_POST['amount'] ) ){
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?=$path_to_root?>/assets/css/checkout.css">
   </head>
   <body>
+    <div id="strikeout-button-container">
   <?include $path_to_pp.'/inc/ui/checkout-button.php'?>
+    </div>
   </body>
 </html>
 
