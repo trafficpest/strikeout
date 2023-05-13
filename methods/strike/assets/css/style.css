@@ -1,6 +1,6 @@
 body {
-  background-color: #eeeeee;
-    :margin: 0;
+  background-color: lightgrey;
+  margin: 0;
 }
 
 .inv-container {
@@ -9,7 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  background-color: #eeeeee;
+  background-color: lightgrey;
 }
 
 .inv-container p {

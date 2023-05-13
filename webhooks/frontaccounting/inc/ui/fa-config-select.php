@@ -9,7 +9,7 @@
 <?
   foreach(glob($path_to_root.'/methods/*', GLOB_ONLYDIR) as $plugin) {
     $plugin = str_replace($path_to_root.'/methods/', '', $plugin);
-    echo '<option value="'.$plugin.'">'.strtoupper($plugin).'</option>';
+    echo '<option value="'.$plugin.'">'.ucfirst($plugin).'</option>';
   }
 ?>
   </select>

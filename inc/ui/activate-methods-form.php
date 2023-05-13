@@ -16,7 +16,8 @@ $cnt=0;
   <div class="form-check form-switch mb-3">
     <input class="form-check-input" name="<?=$plugin?>" 
     type="checkbox" id="selectPlugin<?=$cnt?>" <?=$status?>>
-    <label class="form-check-label" for="selectPlugin<?=$cnt?>"><?=$plugin?>
+    <label class="form-check-label" for="selectPlugin<?=$cnt?>">
+      <?=ucfirst($plugin)?>
     </label>
   </div>
 <?php

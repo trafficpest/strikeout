@@ -36,6 +36,7 @@ if (isset($_POST['paymentMethod']) && $_POST['paymentMethod'] !== ''){
       <?include $path_to_fa.'/inc/ui/db-config-form.php'?>
     </div>
     <div class="col-12 col-md-6">
+      <?include $path_to_fa.'/inc/ui/fa-config-select.php'?>
       <?include $path_to_fa.'/inc/ui/fa-config-form.php'?>
     </div>
   </div>

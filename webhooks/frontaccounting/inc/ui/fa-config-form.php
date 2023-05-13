@@ -13,7 +13,6 @@ if ($fa_users[0] === 'ERROR'){
     .'</div>';
 }elseif (isset($_POST['paymentMethod']) && $_POST['paymentMethod'] !== '') {
   //database and company found
-  include $path_to_fa.'/inc/ui/fa-config-select.php';
 ?>
 <form class="bg-light rounded p-3 mb-3" 
   action="<?=$path_to_fa.'/index.php'?>" method="post">
