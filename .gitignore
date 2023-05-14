@@ -5,17 +5,17 @@ tags
 /tmp/*
 
 # ignore payments.csv
-*.csv
+/webhooks/csv/private/*.csv
 
 # ignore strikeout config.php
-config.php
-methods.php
-plugins.php
+/config/config.php
+/config/methods.php
+/methods/*/config/plugins.php
+/methods/*/config/config.php
 
 # ignore frontaccounting configs
-db-config.php
-fa-config.php
-*fa-config.php
+/webhooks/frontaccounting/config/db-config.php
+/webhooks/frontaccounting/config/*fa-config.php
 
 #ignore swap files
 *.swp
@@ -24,6 +24,5 @@ fa-config.php
 error_log
 *.log
 
-!/books
 
 
