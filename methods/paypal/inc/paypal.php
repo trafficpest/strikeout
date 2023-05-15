@@ -18,8 +18,8 @@ function set_pp_permissions($path_to_pp){
 function load_pp_config($file){
   
   $default_config = array(
-      'CLIENT_ID' => 'Your strike api key here', 
-      'APP_SECRET' => 'Your name / company name here',
+      'CLIENT_ID' => 'Your PayPal Client ID key here', 
+      'APP_SECRET' => 'Your PayPal App Secret here',
       'WEBHOOK_ID' => 'Webhook ID from your Active Subscriptions',
     );
 
