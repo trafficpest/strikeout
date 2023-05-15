@@ -9,6 +9,7 @@
 /lang/*
 /modules/*
 /themes/*
+!/modules/_cache/
 !themes/default
 !themes/canvas
 !themes/dropdown
@@ -19,4 +20,5 @@ installed_extensions.php
 config.php
 config_db.php
 !index.php
+
 
