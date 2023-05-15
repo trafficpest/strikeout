@@ -15,5 +15,6 @@ error_log
 *.swp
 tags
 
-
+#include all index.php files
+!index.php
 
