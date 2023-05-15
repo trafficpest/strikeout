@@ -20,7 +20,3 @@ config.php
 config_db.php
 !index.php
 
-#added for strikeout version
-tags
-error_log
-*.swp

@@ -1,28 +1,19 @@
-# ignore vim tags
-tags
-
-# ignore testing tmp
+# ignore temp 
 /tmp/*
 
 # ignore payments.csv
 /webhooks/csv/private/*.csv
 
-# ignore strikeout config.php
-/config/config.php
-/config/methods.php
-/methods/*/config/plugins.php
-/methods/*/config/config.php
+# ignore strikeout configs
+/config/*
+/methods/*/config/*
+/webhooks/*/config/*
 
-# ignore frontaccounting configs
-/webhooks/frontaccounting/config/db-config.php
-/webhooks/frontaccounting/config/*fa-config.php
-
-#ignore swap files
-*.swp
-
-#ignore log files
+#ignore logs, temp swap files, and vim tag files
 error_log
 *.log
+*.swp
+tags
 
 
 
