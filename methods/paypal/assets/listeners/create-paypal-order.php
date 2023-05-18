@@ -28,7 +28,7 @@ if (isset($post_data['strikeout']['amount'])){
 
   $json = json_encode($body);
 
-  $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders';
+  $url = 'https://api-m.paypal.com/v2/checkout/orders';
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

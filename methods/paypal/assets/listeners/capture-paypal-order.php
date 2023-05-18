@@ -14,7 +14,7 @@ if (isset($post_data['orderID'])){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders/'
+  $url = 'https://api-m.paypal.com/v2/checkout/orders/'
     .$post_data['orderID'].'/capture';
 
   $ch = curl_init($url);

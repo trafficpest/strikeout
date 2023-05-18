@@ -1,0 +1,96 @@
+body {
+  background-color: lightgrey;
+  margin: 0;
+}
+
+.inv-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: lightgrey;
+}
+
+.inv-container p {
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+}
+
+.inv-container p strong {
+  font-weight: bold;
+}
+
+.strikeInvoice {
+  text-align: center;
+  width: 80%;
+  max-width: 390px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.copyInvoice {
+display: inline-block;
+}  
+
+.copyInvoice input[type="text"] {
+width: 60%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+//  font-weight: bold;
+  font-size: 16px;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input[type="text"] {
+padding: 10px;
+border-radius: 4px;
+border: 1px solid #ccc;
+width: 100%;
+margin-bottom: 15px;
+font-size: 16px;
+box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#result {
+font-size: 18px;
+border-radius: 5px;
+}
+
+#result #secondsLeft {
+font-weight: bold;
+display: inline;
+color: #FFA500;
+}
+
+#expirationLine {
+  margin-bottom: 10px;
+}

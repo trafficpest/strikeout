@@ -21,6 +21,7 @@ function load_pp_config($file){
       'CLIENT_ID' => 'Your PayPal Client ID key here', 
       'APP_SECRET' => 'Your PayPal App Secret here',
       'WEBHOOK_ID' => 'Webhook ID from your Active Subscriptions',
+      'sdk_options' => 'currency=USD&disable-funding=credit&enable-funding=venmo',
     );
 
   $config = load_config($file, $default_config);
@@ -33,6 +34,7 @@ function update_pp_config($file){
       'CLIENT_ID' => $_POST['clientId'], 
       'APP_SECRET' => $_POST['appSecret'],
       'WEBHOOK_ID' => $_POST['webhookId'],
+      'sdk_options' => $_POST['sdk_options'], 
     );
   
   update_config($file, $config);
@@ -49,7 +51,7 @@ function create_paypal_order($post_data) {
 
   $json = json_encode($post_data);
 
-  $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders';
+  $url = 'https://api-m.paypal.com/v2/checkout/orders';
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -72,7 +74,7 @@ function capture_pp_payment($order_id){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders/'
+  $url = 'https://api-m.paypal.com/v2/checkout/orders/'
     .$order_id.'/capture';
 
   $ch = curl_init($url);
@@ -107,7 +109,7 @@ function create_pp_webhook($webhook_url){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v1/notifications/webhooks';
+  $url = 'https://api-m.paypal.com/v1/notifications/webhooks';
 
   $ch = curl_init($url);
 
@@ -131,7 +133,7 @@ function list_pp_webhooks(){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v1/notifications/webhooks';
+  $url = 'https://api-m.paypal.com/v1/notifications/webhooks';
 
   $ch = curl_init($url);
 
@@ -153,7 +155,7 @@ function delete_pp_webhook($webhook_id){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v1/notifications/webhooks/'
+  $url = 'https://api-m.paypal.com/v1/notifications/webhooks/'
     .$webhook_id;
 
   $ch = curl_init($url);
@@ -177,7 +179,7 @@ function show_pp_webhook($webhook_id){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com/v1/notifications/webhooks/'
+  $url = 'https://api-m.paypal.com/v1/notifications/webhooks/'
     .$webhook_id;
 
   $ch = curl_init($url);
@@ -203,7 +205,7 @@ function generate_pp_access_token() {
 
   $auth = base64_encode($paypal['CLIENT_ID'].':'.$paypal['APP_SECRET']);
 
-  $url = 'https://api-m.sandbox.paypal.com/v1/oauth2/token';
+  $url = 'https://api-m.paypal.com/v1/oauth2/token';
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -239,7 +241,7 @@ function check_paypal_signature(){
 
   $access_token = generate_pp_access_token();
 
-  $url = 'https://api-m.sandbox.paypal.com'
+  $url = 'https://api-m.paypal.com'
     .'/v1/notifications/verify-webhook-signature';
 
   $ch = curl_init($url);

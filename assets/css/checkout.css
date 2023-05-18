@@ -13,6 +13,33 @@ body {
   border-radius: 5px;
 }
 
+#lnbits-button-container {
+  text-align: center;
+  width: 100%;
+  max-width: 749px;
+}
+
+#lnbits-button-container button {
+  width: 100%;
+  padding: 10px; 
+  border: 0px; 
+  border-radius: 5px; 
+  background-color: seagreen; 
+}
+
+#lnbits-button-container p {
+  color: grey; 
+  text-align: center; 
+  font-size: 0.85em; 
+  font-style: italic;
+}
+
+#lnbits-button-container a {
+  color: black; 
+  font-weight: bold; 
+  font-size: 1.0em;
+}
+
 #strike-button-container {
   text-align: center;
   width: 100%;

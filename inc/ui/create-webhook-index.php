@@ -3,7 +3,7 @@ $col=0;
   foreach(glob($path_to_root.'/webhooks/*', GLOB_ONLYDIR) as $dir) {
     $col++;
     if ($col <= 1){
-      echo '<div class="row">'."\r\n";
+      echo '<div class="row mb-3">'."\r\n";
     }
     echo '<div class="text-white col bg-secondary pt-3 mx-2 shadow rounded">';
     include $dir.'/inc/ui/index-menu.php';

@@ -18,9 +18,19 @@
     <input type="text" class="form-control"  id="webhookId" name="webhookId"
     value="<?=$paypal['WEBHOOK_ID']?>" required>
   </div>
+  <div class="mb-3">
+    <label for="sdkOptions" class="form-label">PayPal SDK Options:</label>
+    <div class="float-end">
+      <a href="https://developer.paypal.com/sdk/js/configuration/#link-queryparameters" 
+         target="_blank">Read Here</a>
+    </div>
+    <input type="text" class="form-control"  id="sdk_options" name="sdk_options"
+    value="<?=$paypal['sdk_options']?>" required>
+  </div>
     <input type="hidden" id="configForm" name="configForm" 
     value="true" >
     <div class="mb-3">
     <button type="submit" class="btn btn-warning" value="Submit">Submit</button>
   </div>
 </form>
+
