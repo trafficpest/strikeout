@@ -30,6 +30,13 @@ if (isset($_POST['paymentMethod']) && $_POST['paymentMethod'] !== ''){
 
 <h1 class="text-white p-3">FrontAccounting</h1>
 <div class="container mt-5 bg-secondary rounded p-3 mb-3">  
+  <div class="row">
+    <div class="col">
+      <?include $path_to_fa.'/inc/ui/fa-install-info.php'?>
+    </div>
+  </div>
+</div>
+<div class="container mt-5 bg-secondary rounded p-3 mb-3">  
 <h1 class="text-white text-center p-3">Configure</h1>
   <div class="row">
     <div class="col-12 col-md-6">

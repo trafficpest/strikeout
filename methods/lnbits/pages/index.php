@@ -21,15 +21,6 @@ if ( isset($_POST['setPermissions']) ){
 if ( isset($_POST['activatePlugin']) ){
   save_plugin_config($path_to_lnbits.'/config/plugins.php');
 }
-/*
-if ( isset($_POST['createSubcription']) ) {
-  create_strike_subsrciption($_POST['webhookUrl']);
-}
-
-if ( isset($_GET['deleteSubscription']) ) {
-  delete_strike_subscriptions($_GET['deleteSubscription']);
-}
- */
 ?>
 
 <?include $path_to_root.'/inc/ui/header.php'?>
