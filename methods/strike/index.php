@@ -66,8 +66,8 @@ QRcode::png( $strike_quote['lnInvoice'], $file, QR_ECLEVEL_L, 4 );
 <body>
 <div class="inv-container">
   <div class="strikeInvoice">
-
-  <h3>Bitcoin Lightning Invoice</h3>
+  <img id="bitcoin_logo" src="./assets/images/btc-lightning.png">
+  <h3 id="title">Lightning Invoice</h3>
 
   <div class="description">
     <?=$strike_quote['description']?>

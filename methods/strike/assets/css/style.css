@@ -25,7 +25,7 @@ body {
 .strikeInvoice {
   text-align: center;
   width: 80%;
-  max-width: 300px;
+  max-width: 350px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
   padding: 20px;
@@ -41,10 +41,9 @@ width: 60%;
 }
 
 .description {
-  display: flex;
-  flex-direction: column;
+  margin: auto;
+  width: 75%;
   margin-bottom: 15px;
-//  font-weight: bold;
   font-size: 16px;
 }
 
@@ -78,6 +77,15 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+#bitcoin_logo {
+  margin-top: 2%;
+  width: 200px;
+}
+
+#title {
+  margin-top: 0px;
 }
 
 #result {
