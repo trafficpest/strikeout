@@ -23,6 +23,23 @@ function get_fa_users(){
   return $users;
 }
 
+function get_fa_stock_master(){
+  global $db;
+  $sql ='SELECT * FROM `'.$db['table_pref'].'stock_master`';
+  $sql_results = get_sql_data($sql);
+  if ($sql_results[0] === 'ERROR' ||
+      $sql_results === '0 results'){
+    return $sql_results;
+  }
+   
+  foreach ($sql_results as $result){
+    $stock_master[] = array(
+      'stock_id' => $result['stock_id'],
+      'description' => $result['description']
+    );
+  }
+  return $stock_master;
+}
 
 function get_fa_bank_accts(){
   global $db;

@@ -80,6 +80,15 @@ function get_last_bank_trans(){
   return $banktran_row;
 }
 
+function get_last_inv_adjust(){
+  // get last payment trans_no used
+  global $db;
+  $sql =  "SELECT * FROM `".$db['table_pref']."stock_moves` WHERE `type` = 17 "
+    ."ORDER BY `trans_no` DESC Limit 1";
+  $invtran_row = get_sql_data( $sql );
+  return $invtran_row;
+}
+
 function insert_debtor_trans($data){
   global $db;
 // insert debtor trans

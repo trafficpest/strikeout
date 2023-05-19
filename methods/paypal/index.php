@@ -6,14 +6,15 @@ $path_to_pp = '.';
 require_once $path_to_pp.'/inc/paypal.php';
 $strikeout = load_strikeout_config($path_to_root.'/config/config.php');
 
-// Set Action Url from default config if not set
-if (empty($_POST['action_url'])){$_POST['action_url']=$strikeout['action_url'];}
-
 //Use url variables first if available
 if ( isset($_GET['amount']) ){ $_POST['amount'] = $_GET['amount']; }
 if ( isset($_GET['name']) ) {$_POST['name'] = $_GET['name']; }
 if ( isset($_GET['custId']) ) {$_POST['custId'] = $_GET['custId']; }
 if ( isset($_GET['action_url']) ) {$_POST['action_url'] = $_GET['action_url']; }
+
+// Set Action Url from default config if not set
+if (empty($_POST['action_url'])){$_POST['action_url']=$strikeout['action_url'];}
+if ( empty($_POST['custId']) ){$_POST['custId'] = 'No Reference';}
 
 // error if amount wasn't set
 if ( empty( $_POST['amount'] ) ){

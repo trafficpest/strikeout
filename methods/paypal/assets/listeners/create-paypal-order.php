@@ -24,6 +24,9 @@ if (isset($post_data['strikeout']['amount'])){
         'custom_id' => $post_data['strikeout']['custId'],
       ),
     ),
+    'application_context' => array(
+          'shipping_preference' => 'NO_SHIPPING',
+    ),
   );
 
   $json = json_encode($body);

@@ -13,6 +13,7 @@
 !themes/default
 !themes/canvas
 !themes/dropdown
+!themes/original
 !lang/en_US
 !lang/new_language_template
 installed_languages.inc
