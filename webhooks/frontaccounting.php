@@ -20,25 +20,16 @@ foreach ($fa as $setting){
 
 if (isset ($plugin_payload['Amount']) ){
   if ($fa['acct_option'] == 'tax_id'){
-    fa_payment_by_taxid(
-                        $plugin_payload['Reference'], 
-                        $plugin_payload['Amount']
-                       );
+    fa_payment_by_taxid($plugin_payload);
   }
   if ($fa['acct_option'] == 'debtor_no'){
-    fa_payment_by_debtor(
-                        $plugin_payload['Reference'], 
-                        $plugin_payload['Amount']
-                        );
+    fa_payment_by_debtor($plugin_payload);
   }
   if ($fa['acct_option'] == 'invoice'){
-    fa_payment_by_invoice(
-                        $plugin_payload['Reference'], 
-                        $plugin_payload['Amount']
-                        );
+    fa_payment_by_invoice($plugin_payload);
   }
   if ($fa['acct_option'] == 'bank_deposit'){
-    fa_bank_deposit($plugin_payload['Amount']);
+    fa_bank_deposit($plugin_payload);
   }
 }
 ?> 

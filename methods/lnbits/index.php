@@ -71,7 +71,7 @@ $memo = json_decode($invoice_info['details']['memo'], true);
   <img id="bitcoin_logo" src="./assets/images/btc-lightning.png">
   <h3 id="title">Lightning Invoice</h3>
 
-  <div class="description"><?=$memo['note']?></div>
+  <div class="description"><?=$memo['Memo']?></div>
   <div class="amount"><?=$invoice_info['details']['amount']/1000?> Sats</div>
   <div class="qrcode">
     <img id="invoicePic" src="<?=$file?>"  />

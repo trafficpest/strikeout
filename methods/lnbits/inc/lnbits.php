@@ -44,9 +44,10 @@ function issue_lnbits_invoice($amount, $customer_name, $ref){
 
   global $strikeout, $lnbits;
   $memo = array(
-    'note' => 'Payment to '.$strikeout['payee_name']                 
+    'Memo' => 'Payment to '.$strikeout['payee_name']                 
               .' from '.$customer_name,
-    'ref' => $ref,
+    'Ref' => $ref,
+    'Amount' => $amount,
   );
 
   $post_data = array(
@@ -54,7 +55,7 @@ function issue_lnbits_invoice($amount, $customer_name, $ref){
     'amount' => $amount,
     'memo' => json_encode($memo),
   //'expiry' => 600,
-  'unit' => 'USD',
+    'unit' => 'USD',
   //'internal' => false,
   );
 

@@ -19,7 +19,6 @@ date_default_timezone_set( $strikeout['timezone'] );
 $webhook_data = json_decode(file_get_contents("php://input"), true);
 $invoice_info = check_lnbits_invoice($webhook_data['payment_hash']);
 
-
   if ($invoice_info['paid'] == true){
     // code ran when invoice is paid 
     // values are in millisats hence /1000
@@ -29,14 +28,18 @@ $invoice_info = check_lnbits_invoice($webhook_data['payment_hash']);
       $memo = json_decode($invoice_info['details']['memo'], true);
       $plugin_payload = array(
         'Date' => date('Y-m-d'),
-        'Reference' => $memo['ref'],
+        'Reference' => $memo['Ref'],
         'Correlation ID' => $invoice_info['details']['payment_hash'],
-        'Amount' => $invoice_info['details']['amount']/1000,
-        'Fee' => $invoice_info['details']['fee']/1000,
-        'Currency' => 'Sats',
+        'Amount' => $memo['Amount'],
+        'Fee' => '0.00',
+        'Currency' => 'USD',
         'State' => 'PAID',
+        'Item Received' => 'BTC',
+        'Quantity' => $invoice_info['details']['amount']/1000,
+        'Rate' => round($memo['Amount']/($invoice_info['details']['amount']/1000), 10),
+        'Location' => $invoice_info['details']['wallet_id'],
         'Invoice ID' => $invoice_info['details']['bolt11'],
-        'Description' => $memo['note'],
+        'Description' => $memo['Memo'],
       );
 
       foreach($active_plugins as $plugin => $status){

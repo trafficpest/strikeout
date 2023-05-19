@@ -123,8 +123,13 @@ function insert_audit_trail($data){
   //echo $sql.'<br><br>';
   post_sql_data($sql);
 }
-function insert_bank_deposit($data){ 
+function insert_bank_deposit($data, $payload){ 
  global $db, $fa; 
+
+ if (isset($payload['Item Received'])){
+   // deposit foreign currency
+   $data['amount'] = $payload['Quantity'];
+ }
 
   $sql = "INSERT INTO `".$db['table_pref']."bank_trans` (`id`, `type`, "
     ."`trans_no`, `bank_act`, `ref`, `trans_date`, `amount`, `dimension_id`, "
@@ -180,27 +185,27 @@ function insert_deposit_credit($data){
 }
 
 
-function fa_payment_by_taxid($tax_id, $amount){
+function fa_payment_by_taxid($payload){
   global $fa, $db;
 
   date_default_timezone_set( $fa['timezone'] );
 
   // Get the data needed
   $fiscalyear_row = get_fa_fiscal_year();  
-  $debtor_row = get_fa_debtor_by_taxid($tax_id);
+  $debtor_row = get_fa_debtor_by_taxid($payload['Reference']);
   
   // Check the data is there
   if (empty($debtor_row[0]['debtor_no'])){
-    error_log("Couldn't find tax id ".$tax_id." in the database");
-    fa_bank_deposit($amount);
+    error_log("Couldn't find tax id ".$payload['Reference']." in the database");
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
   $branch_row = get_fa_branch_by_debtor($debtor_row);
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with tax id "
-      .$tax_id." in the database");
-    fa_bank_deposit($amount);
+      .$payload['Reference']." in the database");
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
@@ -216,7 +221,7 @@ function fa_payment_by_taxid($tax_id, $amount){
     'debtor_no' => $debtor_row[0]['debtor_no'],
     'branch_code' => $branch_row[0]['branch_code'],
     'trans_no' => ($debttran_row[0]['trans_no']+1),
-    'amount' => $amount,
+    'amount' => $payload['Amount'],
     'type' => '12',
     'person_id' => $debtor_row[0]['debtor_no'],
     'person_type_id' => '2',
@@ -226,32 +231,32 @@ function fa_payment_by_taxid($tax_id, $amount){
   insert_debtor_trans($data);
   insert_trans_ref($data);
   insert_audit_trail($data);
-  insert_bank_deposit($data);
+  insert_bank_deposit($data, $payload);
   insert_ledger_debit($data);
   insert_ledger_credit($data);
 }
 
-function fa_payment_by_debtor($debtor_no, $amount){
+function fa_payment_by_debtor($payload){
   global $fa, $db;
 
   date_default_timezone_set( $fa['timezone'] );
 
   // Get the data needed
   $fiscalyear_row = get_fa_fiscal_year();
-  $debtor_row = get_fa_debtor_by_debtor($debtor_no);
+  $debtor_row = get_fa_debtor_by_debtor($payload['Reference']);
   
   // Check the data is there
   if (empty($debtor_row[0]['debtor_no'])){
-    error_log("Couldn't find debtor ".$debtor_no." in the database");
-    fa_bank_deposit($amount);
+    error_log("Couldn't find debtor ".$payload['Reference']." in the database");
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
   $branch_row = get_fa_branch_by_debtor($debtor_row);
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with debtor no "
-      .$debtor_no." in the database");
-    fa_bank_deposit($amount);
+      .$payload['Reference']." in the database");
+    fa_bank_deposit($payload['Amount']);
     return;
   }
     
@@ -267,7 +272,7 @@ function fa_payment_by_debtor($debtor_no, $amount){
     'debtor_no' => $debtor_row[0]['debtor_no'],
     'branch_code' => $branch_row[0]['branch_code'],
     'trans_no' => ($debttran_row[0]['trans_no']+1),
-    'amount' => $amount,
+    'amount' => $payload['Amount'],
     'type' => '12',
     'person_id' => $debtor_row[0]['debtor_no'],
     'person_type_id' => '2',
@@ -277,30 +282,30 @@ function fa_payment_by_debtor($debtor_no, $amount){
   insert_debtor_trans($data);
   insert_trans_ref($data);
   insert_audit_trail($data);
-  insert_bank_deposit($data);
+  insert_bank_deposit($data, $payload);
   insert_ledger_debit($data);
   insert_ledger_credit($data);
 }
 
-function fa_payment_by_invoice($invoice_no, $amount){
+function fa_payment_by_invoice($payload){
   global $fa, $db;
 
   date_default_timezone_set( $fa['timezone'] );
 
   // Get the data needed and verify its there
   $fiscalyear_row = get_fa_fiscal_year();
-  $invoice_row = get_fa_invoice_by_no($invoice_no);
+  $invoice_row = get_fa_invoice_by_no($payload['Reference']);
   
   if (empty($invoice_row[0]['debtor_no'])){
-    error_log("Couldn't find invoice ".$invoice_no." in the database");
-    fa_bank_deposit($amount);
+    error_log("Couldn't find invoice ".$payload['Reference']." in the database");
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
   $debtor_row = get_fa_debtor_by_debtor($invoice_row[0]['debtor_no']);
   if (empty($debtor_row[0]['debtor_no'])){
     error_log("Couldn't find debtor ".$debtor_no." in the database");
-    fa_bank_deposit($amount);
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
@@ -308,7 +313,7 @@ function fa_payment_by_invoice($invoice_no, $amount){
   if (empty($branch_row[0]['branch_code'])){
     error_log("Couldn't find a branch for customer with debtor no "
       .$debtor_no." in the database");
-    fa_bank_deposit($amount);
+    fa_bank_deposit($payload['Amount']);
     return;
   }
 
@@ -325,7 +330,7 @@ function fa_payment_by_invoice($invoice_no, $amount){
     'debtor_no' => $debtor_row[0]['debtor_no'],
     'branch_code' => $branch_row[0]['branch_code'],
     'trans_no' => ($debttran_row[0]['trans_no']+1),
-    'amount' => $amount,
+    'amount' => $payload['Amount'],
     'type' => '12',
     'person_id' => $debtor_row[0]['debtor_no'],
     'person_type_id' => '2',
@@ -335,12 +340,12 @@ function fa_payment_by_invoice($invoice_no, $amount){
   insert_debtor_trans($data);
   insert_trans_ref($data);
   insert_audit_trail($data);
-  insert_bank_deposit($data);
+  insert_bank_deposit($data, $payload);
   insert_ledger_debit($data);
   insert_ledger_credit($data);
 }
 
-function fa_bank_deposit($amount){
+function fa_bank_deposit($payload){
   global $fa, $db;
 
   date_default_timezone_set( $fa['timezone'] );
@@ -361,7 +366,7 @@ function fa_bank_deposit($amount){
     'fiscal_year' => $fiscalyear_row[0]['id'],
     'debtor_no' => 'NULL', 
     'trans_no' => ($banktran_row[0]['trans_no']+1),
-    'amount' => $amount,
+    'amount' => $payload['Amount'],
     'type' => '2',
     'person_id' => 'StrikeOut',
     'person_type_id' => '0',
@@ -370,7 +375,7 @@ function fa_bank_deposit($amount){
 
   insert_audit_trail($data);
   insert_trans_ref($data);
-  insert_bank_deposit($data);
+  insert_bank_deposit($data, $payload);
   insert_ledger_debit($data);
   insert_deposit_credit($data);
 }
