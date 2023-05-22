@@ -28,6 +28,7 @@ if ( check_paypal_signature() ){
         'Correlation ID' => $webhook_data['resource']['id'],
         'Amount' => $webhook_data['resource']['seller_receivable_breakdown']['gross_amount']['value'],
         'Fee' => $webhook_data['resource']['seller_receivable_breakdown']['paypal_fee']['value'],
+        'Net' => $webhook_data['resource']['seller_receivable_breakdown']['net_amount']['value'],
         'Currency' => $webhook_data['resource']['seller_receivable_breakdown']['gross_amount']['currency_code'],
         'State' => $webhook_data['resource']['status'],
         'Invoice ID' => $webhook_data['resource']['supplementary_data']['related_ids']['order_id'],

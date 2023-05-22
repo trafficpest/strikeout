@@ -52,7 +52,8 @@ function get_fa_bank_accts(){
     $bank_accts[] = array(
       'id' => $result['id'],
       'account_code' => $result['account_code'],
-      'bank_account_name' => $result['bank_account_name']
+      'bank_account_name' => $result['bank_account_name'],
+      'bank_charge_act' => $result['bank_charge_act']
     );
   }
   return $bank_accts;
@@ -107,6 +108,7 @@ function load_fa_config($config_file){
     'user_login' => '',
     'bank_acct_name' => '',
     'debit_acct' => '',
+    'fee_acct' => '',
     'credit_acct' => '',
     'timezone' => $strikeout['timezone'],
     'acct_option' => ''
@@ -123,6 +125,7 @@ function update_fa_config($config_file){
     'user_login' => $_POST['userLogin'],
     'bank_acct_name' => $_POST['bankAcctName'],
     'debit_acct' => $_POST['debitAcct'],
+    'fee_acct' => $_POST['feeAcct'],
     'credit_acct' => $_POST['creditAcct'],
     'timezone' => $strikeout['timezone'],
     'acct_option' => $_POST['acctOption']

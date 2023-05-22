@@ -137,7 +137,7 @@ function insert_bank_deposit($data, $payload){
 
  if (isset($payload['Item Received'])){
    // deposit foreign currency
-   $data['amount'] = $payload['Quantity'];
+   $payload['Net'] = $payload['Quantity'];
  }
 
   $sql = "INSERT INTO `".$db['table_pref']."bank_trans` (`id`, `type`, "
@@ -145,25 +145,27 @@ function insert_bank_deposit($data, $payload){
     ."`dimension2_id`, `person_type_id`, `person_id`, `reconciled`) "
     ."VALUES (NULL, '".$data['type']."', '".$data['trans_no']."', '"
     .$fa['bank_acct_name']."', '".$data['ref']."', '".date('Y-m-d')."', '"
-    .$data['amount']."', '0', '0', '".$data['person_type_id']."', '"
+    .$payload['Net']."', '0', '0', '".$data['person_type_id']."', '"
     .$data['person_id']."', NULL)";
 
   //echo $sql.'<br><br>';
   post_sql_data($sql);
 }
-function insert_ledger_debit($data){
+
+function insert_ledger_debit($data, $amount, $account){
   global $db, $fa;
 
   $sql = "INSERT INTO `".$db['table_pref']."gl_trans` (`counter`, `type`, "
     ."`type_no`, `tran_date`, `account`, `memo_`, `amount`, `dimension_id`, "
     ."`dimension2_id`, `person_type_id`, `person_id`) "
     ."VALUES (NULL, '".$data['type']."', '".$data['trans_no']."', '"
-    .date('Y-m-d')."', '".$fa['debit_acct']."', '".$data['memo_']."', '"
-    .$data['amount']."', '0', '0', NULL, NULL)";
+    .date('Y-m-d')."', '".$account."', '".$data['memo_']."', '"
+    .$amount."', '0', '0', NULL, NULL)";
 
   //echo $sql.'<br><br>';
   post_sql_data($sql);
 }
+
 function insert_ledger_credit($data){
   global $db, $fa;
 
@@ -241,8 +243,12 @@ function fa_payment_by_taxid($payload){
   insert_trans_ref($data);
   insert_audit_trail($data);
   insert_bank_deposit($data, $payload);
-  insert_ledger_debit($data);
+  insert_ledger_debit($data, $payload['Net'], $fa['debit_acct']);
   insert_ledger_credit($data);
+  if ($payload['Fee'] != 0){
+    // Account fee if there was one
+    insert_ledger_debit($data, $payload['Fee'], $fa['fee_acct']);
+  }
 }
 
 function fa_payment_by_debtor($payload){
@@ -292,8 +298,12 @@ function fa_payment_by_debtor($payload){
   insert_trans_ref($data);
   insert_audit_trail($data);
   insert_bank_deposit($data, $payload);
-  insert_ledger_debit($data);
+  insert_ledger_debit($data, $payload['Net'], $fa['debit_acct']);
   insert_ledger_credit($data);
+  if ($payload['Fee'] != 0){
+    // Account fee if there was one
+    insert_ledger_debit($data, $payload['Fee'], $fa['fee_acct']);
+  }
 }
 
 function fa_payment_by_invoice($payload){
@@ -350,8 +360,12 @@ function fa_payment_by_invoice($payload){
   insert_trans_ref($data);
   insert_audit_trail($data);
   insert_bank_deposit($data, $payload);
-  insert_ledger_debit($data);
+  insert_ledger_debit($data, $payload['Net'], $fa['debit_acct']);
   insert_ledger_credit($data);
+  if ($payload['Fee'] != 0){
+    // Account fee if there was one
+    insert_ledger_debit($data, $payload['Fee'], $fa['fee_acct']);
+  }
 }
 
 function fa_bank_deposit($payload){
@@ -385,8 +399,12 @@ function fa_bank_deposit($payload){
   insert_audit_trail($data);
   insert_trans_ref($data);
   insert_bank_deposit($data, $payload);
-  insert_ledger_debit($data);
+  insert_ledger_debit($data, $payload['Net'], $fa['debit_acct']);
   insert_deposit_credit($data);
+  if ($payload['Fee'] != 0){
+    // Account fee if there was one
+    insert_ledger_debit($data, $payload['Fee'], $fa['fee_acct']);
+  }
 }
 
 ?>

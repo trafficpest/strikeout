@@ -34,6 +34,7 @@ if (check_strike_signature()){
         'Correlation ID' => $correlation[1],
         'Amount' => $strike_invoice['amount']['amount'],
         'Fee' => '0.00',
+        'Net' => $strike_invoice['amount']['amount'],
         'Currency' => $strike_invoice['amount']['currency'],
         'State' => $strike_invoice['state'],
         'Invoice ID' => $strike_invoice['invoiceId'],

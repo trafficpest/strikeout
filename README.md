@@ -11,16 +11,22 @@ StrikeOut uses a modular payment method and webhook plugin system. You can
 configure and mix and match your desired payments methods and webhook actions.
 If there isnt something you want you can add it.
 
+StrikeOut comes with a modified version of the open source accounting software
+FrontAccounting found in `books/` directory. It can generate QR codes on paper
+and autoemailed invoices for clients to pay their account. For more on 
+FrontAccounting, visit https://frontaccounting.com/
+
 ### Requirements:
 
 - HTTP server (Apache, Nginx, etc.)
 - PHP installed
+- Payment Method API keys such as Strike or PayPal to activate payment methods. 
 
 ### Optional:
 
-- Payment Method API keys such as Strike or PayPal to activate payment methods. 
-- Webhook subscription setup for triggering actions when an event 
-is done, such as generating a CSV file of transactions and recording 
+- mySQL server to setup the included frontaccounting app. 
+- Webhook setup for triggering actions when an event is done, such as 
+generating a CSV file of transactions and recording 
 entries in your accounting software.
 
 ### Installation:

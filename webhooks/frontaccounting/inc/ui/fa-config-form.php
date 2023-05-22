@@ -55,6 +55,18 @@ foreach ($fa_coa as $account){
     </select>
   </div>
   <div class="mb-3">
+    <label for="feeAcct" class="form-label">Bank Fee Account:</label>
+    <select class="form-control"  id="feeAcct" name="feeAcct">
+    <option value="">***Ledger Account to Debit(+) Fees***</option>
+<?
+foreach ($fa_coa as $account){
+  echo '<option value="'.$account['account_code'].'">'
+    .$account['account_code'].' '.$account['account_name'].'</option>'."\r\n";
+}
+?>
+    </select>
+  </div>
+  <div class="mb-3">
     <label for="creditAcct" class="form-label">Credit Account:</label>
     <select class="form-control"  id="creditAcct" name="creditAcct">
     <option value="">***Ledger Account to Credit(-)***</option>
@@ -91,6 +103,8 @@ foreach ($fa_coa as $account){
   bankAcctName.value = "<?=$fa['bank_acct_name']?>";
   var debitAcct = document.getElementById("debitAcct");
   debitAcct.value = "<?=$fa['debit_acct']?>";
+  var feeAcct = document.getElementById("feeAcct");
+  feeAcct.value = "<?=$fa['fee_acct']?>";
   var creditAcct = document.getElementById("creditAcct");
   creditAcct.value = "<?=$fa['credit_acct']?>";
   var acctOption = document.getElementById("acctOption");
@@ -102,6 +116,7 @@ foreach ($fa_coa as $account){
     bankAccts.forEach((bankAcct) => {
       if (bankAcct['id']  === bankAcctId){
         debitAcct.value = bankAcct['account_code'];
+        feeAcct.value = bankAcct['bank_charge_act'];
       }
     });
   }

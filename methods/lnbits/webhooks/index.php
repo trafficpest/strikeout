@@ -32,6 +32,7 @@ $invoice_info = check_lnbits_invoice($webhook_data['payment_hash']);
         'Correlation ID' => $invoice_info['details']['payment_hash'],
         'Amount' => $memo['Amount'],
         'Fee' => '0.00',
+        'Net' => $memo['Amount'],
         'Currency' => 'USD',
         'State' => 'PAID',
         'Item Received' => 'BTC',
