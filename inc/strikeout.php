@@ -48,6 +48,8 @@ function set_so_permissions($path_to_root){
     $path_to_root.'/methods/strike/inc' => 0750,
     $path_to_root.'/methods/paypal/config' => 0750,
     $path_to_root.'/methods/paypal/inc' => 0750,
+    $path_to_root.'/methods/lnbits/config' => 0750,
+    $path_to_root.'/methods/lnbits/inc' => 0750,
   );
 
   update_file_permissions($dirs);
