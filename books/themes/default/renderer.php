@@ -192,7 +192,10 @@ function button_operator(id) {
 							}
 						}
 						elseif (!$_SESSION["wa_current_user"]->hide_inaccessible_menu_items())	
-							echo "<li $line><a class='inactive'>$img{$lnk[0]}</a></li>\n";
+            {
+              // Removed link if disabled from nav
+							//echo "<li $line><a class='inactive'>$img{$lnk[0]}</a></li>\n";
+            }
 					}
 					echo "</ul>\n";
 				}
