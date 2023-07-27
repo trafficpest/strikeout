@@ -11,7 +11,6 @@
       <img 
         src="<?=$path_to_root?>/methods/strike/assets/images/btc-lightning.png" 
         height="24px" alt="Bitcoin"></button>  
-    <p>Powered by <a href="https://strike.me" target="_blank">Strike<a/></p>
-    </div>
+    <p>Powered by <a href="https://strike.me" target="_blank">Strike</a></p>
 </form>
 </div>

@@ -11,6 +11,6 @@
       <img 
         src="<?=$path_to_root?>/methods/lnbits/assets/images/btc-lightning.png" 
         height="24px" alt="Bitcoin"></button>  
-    <p>Powered by <a href="https://lnbits.com" target="_blank">LNbits<a/></p>
+    <p>Powered by <a href="https://lnbits.com" target="_blank">LNbits</a></p>
 </form>
 </div>
