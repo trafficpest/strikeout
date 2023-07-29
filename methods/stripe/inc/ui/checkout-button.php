@@ -48,7 +48,15 @@ async function initialize() {
   const { clientSecret } = await fetch("<?=$path_to_root?>/methods/stripe/assets/listeners/create-stripe-order.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items }),
+    body: JSON.stringify({
+          items: [{ id: "Goods/Services" }],
+          strikeout: {
+            amount: "<?=$_POST['amount']?>",
+            custId: "<?=$_POST['custId']?>",
+            name: "<?=$_POST['name']?>",
+            action_url: "<?=$_POST['action_url']?>"
+            },
+        }),
   }).then((r) => r.json());
 
   elements = stripe.elements({ clientSecret });
