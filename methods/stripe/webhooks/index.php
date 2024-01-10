@@ -1,16 +1,16 @@
 <?php
-
+// webhook needs work currently not finished
 $path_to_root = '../../..';
-$path_to_pp = '..';
+$path_to_stripe = '..';
 
 ini_set('log_errors', 1);
-ini_set('error_log', $path_to_root.'/logs/paypal.log');
+ini_set('error_log', $path_to_root.'/logs/stripe.log');
 
 require_once $path_to_root.'/inc/strikeout.php';
-require_once $path_to_pp.'/inc/paypal.php';
+require_once $path_to_stripe.'/inc/stripe.php';
 
 $strikeout = load_strikeout_config($path_to_root.'/config/config.php');
-$paypal = load_pp_config($path_to_pp.'/config/config.php');
+$stripe = load_stripe_config($path_to_stripe.'/config/config.php');
 
 date_default_timezone_set( $strikeout['timezone'] );
 
@@ -20,8 +20,8 @@ if ( check_paypal_signature() ){
   if ($webhook_data['event_type'] == 'PAYMENT.CAPTURE.COMPLETED'){ 
     // code ran when invoice is updates
   
-      $active_plugins = load_config($path_to_pp.'/config/plugins.php');
-      $method = 'paypal'; 
+      $active_plugins = load_config($path_to_stripe.'/config/plugins.php');
+      $method = 'stripe'; 
       $plugin_payload = array(
         'Date' => date('Y-m-d'),
         'Reference' => $webhook_data['resource']['custom_id'],
@@ -39,8 +39,8 @@ if ( check_paypal_signature() ){
         if ($status == 'on'){
           include $path_to_root.'/webhooks/'.$plugin.'.php';
         }
-        ini_set('error_log', $path_to_root.'/logs/paypal.log');
-        //return log to strike
+        ini_set('error_log', $path_to_root.'/logs/stripe.log');
+        //return log to i
       }
   }
 }else{

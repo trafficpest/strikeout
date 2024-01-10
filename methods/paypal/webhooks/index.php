@@ -40,7 +40,7 @@ if ( check_paypal_signature() ){
           include $path_to_root.'/webhooks/'.$plugin.'.php';
         }
         ini_set('error_log', $path_to_root.'/logs/paypal.log');
-        //return log to strike
+        //return log to paypal
       }
   }
 }else{
