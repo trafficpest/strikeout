@@ -3,6 +3,8 @@
 require_once $path_to_root.'/methods/stripe/inc/stripe.php';
 $stripe = load_stripe_config($path_to_root.'/methods/stripe/config/config.php');
 
+// stripe button wrapped in if statement since stripe doesnt work under 50 cents
+if($_POST['amount'] > .49){
 ?>
 <link rel="stylesheet" href="<?=$path_to_root?>/methods/stripe/assets/css/checkout.css" />
 <script src="https://js.stripe.com/v3/"></script>
@@ -155,4 +157,7 @@ function setLoading(isLoading) {
   }
 }
 </script>
+<?php
+}
+?>
 
