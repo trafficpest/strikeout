@@ -79,32 +79,25 @@ function get_stripe_payment_intent($id) {
 
   return $response;
 }
-/*
-function create_pp_webhook($webhook_url){
 
-  $post_data = array(
+function create_stripe_webhook($webhook_url){
+  global $stripe;
+
+  $post_data = [
     'url' => $webhook_url,
-    'event_types' => array(
-      array(
-        'name' => '*',
-      ),
-    ),
-  );
-
-  $json = json_encode($post_data);
-
-  $access_token = generate_pp_access_token();
-
-  $url = 'https://api-m.paypal.com/v1/notifications/webhooks';
+    'enabled_events' => ['*'],
+    ];
+  $query = http_build_query($post_data);
+  $url = 'https://api.stripe.com/v1/webhook_endpoints';
 
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Authorization: Bearer '.$access_token,
+    'Authorization: Bearer '.$stripe['PRI_KEY'],
+    'Content-Type: application/x-www-form-urlencoded',
   ));
 
   $response = curl_exec($ch);
@@ -115,33 +108,29 @@ function create_pp_webhook($webhook_url){
   return $response;
 }
 
-function list_pp_webhooks(){
+function list_stripe_webhooks(){
+  global $stripe;
 
-  $access_token = generate_pp_access_token();
-
-  $url = 'https://api-m.paypal.com/v1/notifications/webhooks';
+  $url = 'https://api.stripe.com/v1/webhook_endpoints';
 
   $ch = curl_init($url);
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Authorization: Bearer '.$access_token,
+    'Authorization: Bearer '.$stripe['PRI_KEY'],
   ));
 
   $response = curl_exec($ch);
   curl_close($ch);
 
   $response = json_decode($response , true);
-
   return $response;
 }
 
-function delete_pp_webhook($webhook_id){
+function delete_stripe_webhook($webhook_id){
+  global $stripe;
 
-  $access_token = generate_pp_access_token();
-
-  $url = 'https://api-m.paypal.com/v1/notifications/webhooks/'
+  $url = 'https://api.stripe.com/v1/webhook_endpoints/'
     .$webhook_id;
 
   $ch = curl_init($url);
@@ -149,8 +138,7 @@ function delete_pp_webhook($webhook_id){
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Authorization: Bearer '.$access_token,
+    'Authorization: Bearer '.$stripe['PRI_KEY'],
   ));
 
   $response = curl_exec($ch);
@@ -160,7 +148,7 @@ function delete_pp_webhook($webhook_id){
 
   return $response;
 }
-
+/*
 function show_pp_webhook($webhook_id){
 
   $access_token = generate_pp_access_token();

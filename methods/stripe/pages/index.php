@@ -22,6 +22,13 @@ if ( isset($_POST['activatePlugin']) ){
   save_plugin_config($path_to_stripe.'/config/plugins.php');
 }
 
+if ( isset($_POST['createSubcription']) ) {
+  create_stripe_webhook($_POST['webhookUrl']);
+}
+
+if ( isset($_GET['deleteSubscription']) ) {
+  delete_stripe_webhook($_GET['deleteSubscription']);
+}
 ?>
 
 <?include $path_to_root.'/inc/ui/header.php'?>

@@ -1,6 +1,6 @@
 <?php
 // Need to add webhooks in future
-//$subscriptions = list_stripe_webhooks();
+$subscriptions = list_stripe_webhooks();
 
 ?>
 
@@ -16,14 +16,14 @@
 </tr>
 <?php
 
-if ( isset($subscriptions['webhooks'][0]) ){
+if ( isset($subscriptions['data'][0]) ){
   
-  foreach ( $subscriptions['webhooks'] as $sub ){
+  foreach ( $subscriptions['data'] as $sub ){
 
     echo '<tr>
       <td>'.$sub['id'].'</td><td>'.$sub['url'].'</td>
-      <td>'.$sub['event_types'][0]['description'].'</td>
-      <td>'.$sub['event_types'][0]['status'].'</td>
+      <td>'.$sub['enabled_events'][0].'</td>
+      <td>'.$sub['status'].'</td>
       <td>
       <a href="'.strtok($_SERVER["REQUEST_URI"], '?').'?deleteSubscription='.$sub['id'].'">X
       </a>
