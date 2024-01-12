@@ -1,5 +1,6 @@
 <?php
 // webhook needs work currently not finished
+// needs signature proof and fees added
 $path_to_root = '../../..';
 $path_to_stripe = '..';
 
@@ -14,25 +15,29 @@ $stripe = load_stripe_config($path_to_stripe.'/config/config.php');
 
 date_default_timezone_set( $strikeout['timezone'] );
 
-if ( check_paypal_signature() ){
-  $webhook_data = json_decode(file_get_contents("php://input"), true);
+$webhook_raw = file_get_contents("php://input");
+  $webhook_data = json_decode($webhook_raw, true);
   
-  if ($webhook_data['event_type'] == 'PAYMENT.CAPTURE.COMPLETED'){ 
+  if ($webhook_data['type'] == 'charge.succeeded'){ 
+ error_log($webhook_raw);
     // code ran when invoice is updates
-  
       $active_plugins = load_config($path_to_stripe.'/config/plugins.php');
-      $method = 'stripe'; 
+      $method = 'stripe';
+      if ($webhook_data['data']['object']['paid'] == 'true')
+        {$pay_state = 'PAID';} else {$pay_state = 'UNPAID';}
+
       $plugin_payload = array(
         'Date' => date('Y-m-d'),
-        'Reference' => $webhook_data['resource']['custom_id'],
-        'Correlation ID' => $webhook_data['resource']['id'],
-        'Amount' => $webhook_data['resource']['seller_receivable_breakdown']['gross_amount']['value'],
-        'Fee' => $webhook_data['resource']['seller_receivable_breakdown']['paypal_fee']['value'],
-        'Net' => $webhook_data['resource']['seller_receivable_breakdown']['net_amount']['value'],
-        'Currency' => $webhook_data['resource']['seller_receivable_breakdown']['gross_amount']['currency_code'],
-        'State' => $webhook_data['resource']['status'],
-        'Invoice ID' => $webhook_data['resource']['supplementary_data']['related_ids']['order_id'],
-        'Description' => $webhook_data['summary'],
+        'Reference' => $webhook_data['data']['object']['metadata']['custId'],
+        'Correlation ID' => $webhook_data['id'],
+        'Amount' => $webhook_data['data']['object']['metadata']['amount'],
+        'Fee' => 0,
+        'Net' => 0,
+        'Currency' => strtoupper($webhook_data['data']['object']['currency']),
+        'State' => $pay_state,
+        'Invoice ID' => 'Need to add this',
+        'Description' => 'Payment from '
+          .$webhook_data['data']['object']['billing_details']['email'],
       );
 
       foreach($active_plugins as $plugin => $status){
@@ -40,12 +45,13 @@ if ( check_paypal_signature() ){
           include $path_to_root.'/webhooks/'.$plugin.'.php';
         }
         ini_set('error_log', $path_to_root.'/logs/stripe.log');
-        //return log to i
+        //return log to stripe
       }
   }
+/*
 }else{
   error_log('The webhook signature didnt pass. If your webhook id is set'
     .' correctly then you received a false message');
 }
-
+ */
 ?>
