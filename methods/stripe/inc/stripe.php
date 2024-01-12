@@ -148,6 +148,28 @@ function delete_stripe_webhook($webhook_id){
 
   return $response;
 }
+
+function get_stripe_transaction($trans_id){
+  global $stripe;
+
+  $url = 'https://api.stripe.com/v1/balance_transactions/'
+    .$trans_id;
+
+  $ch = curl_init($url);
+
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Authorization: Bearer '.$stripe['PRI_KEY'],
+  ));
+
+  $response = curl_exec($ch);
+  curl_close($ch);
+
+  $response = json_decode($response , true);
+
+  return $response;
+}
+
 /*
 function show_pp_webhook($webhook_id){
 
